@@ -10,6 +10,7 @@ public class Student extends Person {
 
 	private String yearOfStudy;
 	private int semester;
+	private boolean active;
 	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 
 	public Student(Person p, String yearOfStudy, int semester, ArrayList<Subject> subjects) {
@@ -20,7 +21,7 @@ public class Student extends Person {
 		this.subjects = subjects;
 	}
 
-public Student(Person p, String yearOfStudy, int semester) {
+	public Student(Person p, String yearOfStudy, int semester) {
 
 		this(p, yearOfStudy, semester, new ArrayList<>());
 	}
@@ -50,16 +51,38 @@ public Student(Person p, String yearOfStudy, int semester) {
 		return this.yearOfStudy;
 	}
 
-	public void setYearOfStudy(String yearOfStudy) {
-		this.yearOfStudy = yearOfStudy;
+	public boolean setYearOfStudy(String yearOfStudy) {
+		if (checkYearOfStudy(yearOfStudy)) {
+			this.yearOfStudy = yearOfStudy;
+			return true;
+		}
+		return false;
+	}
+
+	private boolean checkYearOfStudy(String year) {
+
+		//yyyy-yyyy => 8 symbols
+		if (year.length() != 8) return false;
+		for (int i = 0; i < 8; i++) {
+			if (i != 4 && !Character.isDigit(year.charAt(i)))
+				return false;
+			else if (year.charAt(i) != '-')
+					return false;
+		}
+		return true;
 	}
 
 	public int getSemester() {
 		return this.semester;
 	}
 
-	public void setSemester(int semester) {
-		this.semester = semester;
+	// TODO: change 10 to variable (depends on degree course)
+	public boolean setSemester(int semester) {
+		if (semester > 0 && semester < 10) {
+			this.semester = semester;
+			return true;
+		}
+		return false;
 	}
 
 	public ArrayList<Subject> getSubjects() {
@@ -72,6 +95,14 @@ public Student(Person p, String yearOfStudy, int semester) {
 
 	public void addSubject(Subject subject) {
 		subjects.add(subject);
+	}
+
+	public boolean getActive() {
+		return this.active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }
