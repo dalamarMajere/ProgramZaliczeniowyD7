@@ -68,13 +68,13 @@
                                     <Insets left="25.0" />
                                  </padding>
                               </VBox>
-                              <TextField fx:id="studentIdLabel" prefHeight="25.0" prefWidth="120.0" text="nr indeksu" />
-                              <TextField fx:id="studentSurnameLabel" text="nazwisko" />
-                              <TextField fx:id="studentNameLabel" text="imie" />
-                              <TextField fx:id="studentSecondNameLabel" text="drugie imię" />
-                              <TextField fx:id="studentBirthDateLabel" text="data urodzenia" />
-                              <TextField fx:id="studentUnitLabel" text="wydział" />
-                              <TextField fx:id="studentSemesterLabel" prefHeight="25.0" prefWidth="163.0" text="semestr">
+                              <TextField fx:id="studentIdLabel" prefHeight="25.0" prefWidth="120.0" promptText="nr indeksu" />
+                              <TextField fx:id="studentSurnameLabel" promptText="nazwisko" />
+                              <TextField fx:id="studentNameLabel" promptText="imie" />
+                              <TextField fx:id="studentSecondNameLabel" promptText="drugie imię" />
+                              <TextField fx:id="studentBirthDateLabel" promptText="data urodzenia" />
+                              <TextField fx:id="studentUnitLabel" promptText="wydział" />
+                              <TextField fx:id="studentSemesterLabel" prefHeight="25.0" prefWidth="163.0" promptText="semestr">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -105,7 +105,7 @@
                               <Insets left="25.0" />
                            </HBox.margin>
                         </VBox>
-                        <TextField fx:id="studentGradesLabel" prefHeight="25.0" prefWidth="735.0" text="oceny (można edytować)">
+                        <TextField fx:id="studentGradesLabel" prefHeight="25.0" prefWidth="735.0" promptText="oceny">
                            <HBox.margin>
                               <Insets top="4.0" />
                            </HBox.margin>
@@ -140,7 +140,7 @@
                               <Insets top="4.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="employeeCryteriumLabel" prefHeight="25.0" prefWidth="160.0" text="kryteria">
+                        <TextField fx:id="employeeCryteriumLabel" prefHeight="25.0" prefWidth="160.0" promptText="kryteria...">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
@@ -184,11 +184,11 @@
                                     <Insets />
                                  </HBox.margin>
                               </VBox>
-                              <TextField fx:id="employeeIdLabel" text="ID" />
-                              <TextField fx:id="employeeTitleLabel" text="tytuł" />
-                              <TextField fx:id="employeeSurnameLabel" text="nazwisko" />
-                              <TextField fx:id="employeeNameLabel" text="imie" />
-                              <TextField fx:id="employeeBirthDate" text="data urodzenia">
+                              <TextField fx:id="employeeIdLabel" promptText="ID" />
+                              <TextField fx:id="employeeTitleLabel" promptText="tytuł" />
+                              <TextField fx:id="employeeSurnameLabel" promptText="nazwisko" />
+                              <TextField fx:id="employeeNameLabel" promptText="imie" />
+                              <TextField fx:id="employeeBirthDate" promptText="data urodzenia">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -252,7 +252,7 @@
                               <Insets top="4.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="unitCriteriumLabel" prefHeight="25.0" prefWidth="160.0" text="kryteria">
+                        <TextField fx:id="unitCriteriumLabel" prefHeight="25.0" prefWidth="160.0" promptText="kryteria">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
@@ -299,8 +299,8 @@
                                     <Insets left="20.0" />
                                  </HBox.margin>
                               </VBox>
-                              <TextField fx:id="unitIdLabel" prefHeight="25.0" prefWidth="56.0" text="ID" />
-                              <TextField fx:id="unitNameLabel" prefHeight="25.0" prefWidth="673.0" text="nazwa" />
+                              <TextField fx:id="unitIdLabel" prefHeight="25.0" prefWidth="56.0" promptText="ID" />
+                              <TextField fx:id="unitNameLabel" prefHeight="25.0" prefWidth="673.0" promptText="nazwa" />
                            </children>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#unitSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
@@ -321,7 +321,7 @@
                               <Insets top="4.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="subjectCryteriumLabel" prefHeight="25.0" prefWidth="160.0" text="kryteria">
+                        <TextField fx:id="subjectCryteriumLabel" prefHeight="25.0" prefWidth="160.0" promptText="kryteria">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
@@ -361,7 +361,7 @@
                                     <RadioButton fx:id="subjectNotActiveRadio" mnemonicParsing="false" onAction="#subjectActivityRadioAction" text="Nieaktywny" toggleGroup="$subjectActivityRadio" />
                                  </children>
                               </VBox>
-                              <TextField fx:id="subjectNameLabel" prefHeight="25.0" prefWidth="344.0" text="nazwa" />
+                              <TextField fx:id="subjectNameLabel" prefHeight="25.0" prefWidth="344.0" promptText="nazwa" />
                               <ChoiceBox fx:id="subjectUnitChoiceBox" prefHeight="25.0" prefWidth="382.0" />
                            </children>
                         </HBox>
