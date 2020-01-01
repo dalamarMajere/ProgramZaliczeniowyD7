@@ -51,6 +51,14 @@ public class Controller implements Initializable {
 	    }
 
 	    public void studentAddButtonAction(){
+
+	    	studentIdLabel.setText("0");
+	        studentSurnameLabel.setText("");
+	        studentNameLabel.setText("");
+	        studentSecondNameLabel.setText("");
+	        studentBirthDateLabel.setText("01.01.1899");
+	        studentUnitLabel.setText("0");
+	        studentSemesterLabel.setText("0");
 	    }
 
 
@@ -72,7 +80,14 @@ public class Controller implements Initializable {
     public TextField studentSemesterLabel;
 
 	    public void studentInfoSaveButtonAction(){
-	    	System.out.println(studentIdLabel.getText());
+	    	String id = studentIdLabel.getText();
+	        String surname = studentSurnameLabel.getText();
+	        String name = studentNameLabel.getText();
+	        String secondName = studentSecondNameLabel.getText();
+	        String birthDate = studentBirthDateLabel.getText();
+	        String unit = studentUnitLabel.getText();
+	        String semester = studentSemesterLabel.getText();
+	        Main.loadStudent(id, surname, name, secondName, birthDate, unit, semester);
 	    }
 
 	    public void studentInfoAbortButtonAction(){
@@ -125,10 +140,15 @@ public class Controller implements Initializable {
 	public TextField employeeTitleLabel;
     public TextField employeeSurnameLabel;
     public TextField employeeNameLabel;
-    public TextField employeeBirthDate;
+    public TextField employeeBirthDateLabel;
 
 	    public void employeeSaveButtonAction(){
-
+	    	String id = employeeIdLabel.getText();
+	        String surname = employeeSurnameLabel.getText();
+	        String name = employeeNameLabel.getText();
+	        String birthDate = employeeBirthDateLabel.getText();
+	        String tittle = employeeTitleLabel.getText();
+	        Main.loadTeacher(id, tittle, surname, name, birthDate);
 	    }
 
 	    public void employeeAbortButtonAction(){

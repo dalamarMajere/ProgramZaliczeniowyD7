@@ -21,12 +21,12 @@ public class dataAnalyzer {
 		while (in.hasNextLine()) {
 			data = in.nextLine().split(";");
 			switch (data[data.length - 1]) {
-				case "Student#":
+				case "Student":
 					System.out.println("Student");
 					//Student.loadSudent(data);
 					break;
-				case "Nauczyciel#":
-					System.out.println("Nauczyciel");
+				case "Teacher":
+					System.out.println("Teacher");
 					//Professor.loadProfessor(data);
 					break;
 			}

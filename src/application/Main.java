@@ -19,5 +19,18 @@ public class Main extends Application {
 	        primaryStage.setTitle("USOSWEB Editor");
 	        primaryStage.setScene(new Scene(root, 1000, 800));
 	        primaryStage.show();
-	    }
+	 }
+
+	 public static void loadStudent(String... information) {
+		 /*
+		  * loading student
+		  * - add to list of all students
+		  * - add to faculty
+		  * - add to degree course
+		  */
+	 }
+
+	 public static void loadTeacher(String... information) {
+
+	 }
 }

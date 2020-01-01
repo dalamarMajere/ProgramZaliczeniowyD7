@@ -44,7 +44,7 @@ public class Student extends Person {
 
 	@Override
 	public String toString() {
-		return super.toString() + ";" + "Student#";
+		return super.toString() + ";" + "Student\n";
 	}
 
 	public String getYearOfStudy() {
