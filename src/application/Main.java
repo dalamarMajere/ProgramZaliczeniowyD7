@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -22,12 +24,24 @@ public class Main extends Application {
 	 }
 
 	 public static void loadStudent(String... information) {
-		 /*
-		  * loading student
-		  * - add to list of all students
-		  * - add to faculty
-		  * - add to degree course
-		  */
+		 //directory
+		 String DataStudent = "data/Student.txt";
+		 try {
+			 //create new file
+	            File f = new File(DataStudent);
+	         //if file exists
+	            if (f.createNewFile() || f.isFile()) {
+	            	//get object student
+	            	Student student = new Student(information);
+	            	//write this student on the file (in lex. order)
+	            	dataAnalyzer.loadStudent(f, student);
+	            }
+	            else System.err.println("Error with creating file");
+	     }
+	     catch (Exception e) {
+	            System.err.println(e);
+	     }
+
 	 }
 
 	 public static void loadTeacher(String... information) {

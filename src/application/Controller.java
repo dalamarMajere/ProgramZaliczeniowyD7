@@ -53,11 +53,11 @@ public class Controller implements Initializable {
 	    public void studentAddButtonAction(){
 
 	    	studentIdLabel.setText("0");
-	        studentSurnameLabel.setText("");
-	        studentNameLabel.setText("");
-	        studentSecondNameLabel.setText("");
+	        studentSurnameLabel.setText("A");
+	        studentNameLabel.setText("A");
+	        studentSecondNameLabel.setText("A");
 	        studentBirthDateLabel.setText("01.01.1899");
-	        studentUnitLabel.setText("0");
+	        studentUnitLabel.setText("A");
 	        studentSemesterLabel.setText("0");
 	    }
 
