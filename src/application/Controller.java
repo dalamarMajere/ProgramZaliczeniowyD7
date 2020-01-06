@@ -80,6 +80,7 @@ public class Controller implements Initializable {
     public TextField studentSemesterLabel;
 
 	    public void studentInfoSaveButtonAction(){
+
 	    	String id = studentIdLabel.getText();
 	        String surname = studentSurnameLabel.getText();
 	        String name = studentNameLabel.getText();
@@ -92,6 +93,7 @@ public class Controller implements Initializable {
 
 	    public void studentInfoAbortButtonAction(){
 
+	    	studentAddButtonAction();
 	    }
 
 	public ToggleGroup studentSubjectActivityRadio;

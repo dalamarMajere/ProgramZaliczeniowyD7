@@ -59,7 +59,7 @@ public class Student extends Person implements Comparable<Student> {
 
 	@Override
 	public String toString() {
-		return super.toString() + ";" + unit + ";" + semester + ";#";
+		return super.toString() + ";" + unit + ";" + semester + ";";
 	}
 
 	public String getUnit() {

@@ -23,28 +23,31 @@ public class Main extends Application {
 	        primaryStage.show();
 	 }
 
-	 public static void loadStudent(String... information) {
-		 //directory
-		 String DataStudent = "data/Student.txt";
+	 public static void loadObject(String path, String information) {
+
 		 try {
-			 //create new file
-	            File f = new File(DataStudent);
-	         //if file exists
-	            if (f.createNewFile() || f.isFile()) {
-	            	//get object student
-	            	Student student = new Student(information);
-	            	//write this student on the file (in lex. order)
-	            	dataAnalyzer.loadStudent(f, student);
-	            }
+	            File f = new File(path);
+	            if (f.createNewFile() || f.isFile())
+	            	dataAnalyzer.loadObject(f, information);
 	            else System.err.println("Error with creating file");
 	     }
 	     catch (Exception e) {
 	            System.err.println(e);
 	     }
+	 }
 
+	 public static void loadStudent(String... information) {
+
+		 Student student = new Student(information);
+		 loadObject(DataStudent, student.toString());
 	 }
 
 	 public static void loadTeacher(String... information) {
 
+		 //Teacher teacher = new Teacher(information);
+		 //loadObject(DataTeacher, teacher.toString())
 	 }
+
+	 private static final String DataStudent = "data/Student.txt";
+	 private static final String DataTeacher = "data/Teacher.txt";
 }
