@@ -5,6 +5,7 @@ import java.util.*;
 
 public class dataAnalyzer {
 
+
 	public static void loadObject(File file, String object) throws IOException {
 
 		Scanner read = new Scanner(file);
@@ -13,13 +14,11 @@ public class dataAnalyzer {
 		String tmp;
 		boolean write = false;
 
-		System.out.println("New");
 		while (read.hasNextLine()) {
 
 			tmp = read.nextLine();
-			System.out.print(tmp);
 			if (!write)
-				if (object.compareTo(tmp) < 0)
+				if (myCompareTo(object, tmp) < 0)
 				{
 					write = true;
 					appendToSB(sb, object);
@@ -32,6 +31,20 @@ public class dataAnalyzer {
 		rewrite(file, sb.toString());
 
 		read.close();
+	}
+
+	private static int myCompareTo(String one, String two) {
+
+		String[] ones = one.split(";");
+		String[] twos = two.split(";");
+
+		for (int i = 1; i < 4; i++) {
+			if (ones[i].compareTo(twos[i]) < 0)
+				return -1;
+			if (ones[i].compareTo(twos[i]) > 0)
+				return 1;
+		}
+		return 0;
 	}
 
 	private static void rewrite(File file, String sb) throws IOException {
