@@ -1,5 +1,6 @@
 package application;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 
@@ -37,12 +38,22 @@ public class Controller implements Initializable {
 	    public TextField studentNameLabel;
 	    public TextField studentSecondNameLabel;
 	    public TextField studentBirthDateLabel;
-	    public ChoiceBox<?> studentFacultyChoiceBox;
-	    public ChoiceBox<?> studentCourseChoiceBox;
+	    public ChoiceBox<String> studentFacultyChoiceBox;
+	    public ChoiceBox<String> studentCourseChoiceBox;
 	    public TextField studentSemesterLabel;
 
 		    public void studentAddButtonAction() {
 
+		    	String id = studentIdLabel.getText();
+		        String surname = studentSurnameLabel.getText();
+		        String name = studentNameLabel.getText();
+		        String secondName = studentSecondNameLabel.getText();
+		        String birthDate = studentBirthDateLabel.getText();
+		        String faculty = studentFacultyChoiceBox.getValue();
+		        String course = studentCourseChoiceBox.getValue();
+		        String semester = studentSemesterLabel.getText();
+		        Main.loadStudent(id, surname, name, secondName, birthDate,
+		        		faculty, course, semester);
 		    }
 
 
@@ -100,10 +111,14 @@ public class Controller implements Initializable {
 	    public TextArea courseTextArea;
 	    public TextField courseIdLabel;
 	    public TextField courseNameLabel;
-	    public ChoiceBox<?> courseFacultyChoiceBox;
+	    public ChoiceBox<String> courseFacultyChoiceBox;
 
 		    public void courseAddButtonAction() {
 
+		    	String faculty = courseFacultyChoiceBox.getValue();
+		    	String id = courseIdLabel.getText();
+		    	String name = courseNameLabel.getText();
+		    	Main.loadCourse(id, name, faculty);
 		    }
 
 
@@ -120,13 +135,13 @@ public class Controller implements Initializable {
 	    public TextField facultyIdLabel;
 	    public TextField facultyNameLabel;
 
-
-
-		    public void facultyAddButtonAction() {
+		    public void facultyAddButtonAction() throws IOException {
 
 		    	String id = facultyIdLabel.getText();
 		        String name = facultyNameLabel.getText();
 		        Main.loadFaculty(id, name);
+		        courseFacultyChoiceBox.setItems(FXCollections.
+    					observableArrayList(Main.getAllFaculties()));
 		    }
 
 

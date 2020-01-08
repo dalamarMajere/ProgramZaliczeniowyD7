@@ -18,6 +18,11 @@ public class CourseOfStudy {
 		this.name=name;
 	}
 
+	@Override
+	public String toString() {
+		return id + ";" + name + ";";
+	}
+
 	public String getId(){
 		return this.id;
 	}

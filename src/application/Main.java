@@ -3,6 +3,8 @@ package application;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +30,6 @@ public class Main extends Application {
 	  * PERSON, STUDENT, TEACHER
 	  */
 	 private static final String DataStudent = "data/Student.txt";
-	 private static final String DataFaculty = "data/Faculty.txt";
 	 private static final String DataTeacher = "data/Teacher.txt";
 
 	 public static void loadObject(String path, String information) {
@@ -62,28 +63,16 @@ public class Main extends Application {
 		 //loadObject(DataTeacher, teacher.toString())
 	 }
 
-<<<<<<< HEAD
 	 public static void searchTeacher(String criterium){
 
 	 }
 
-	 private static void createFacultyFolder() throws FileNotFoundException {
-
-		 createFolder(FolderFaculty);
-
-		 File f = new File(DataFaculty);
-		 Scanner in = new Scanner(f);
-
-		 String tmp;
-
-		 while (in.hasNextLine()) {
-=======
 	 /*
 	  * FACULTY, COURSE, SUBJECT
 	  */
->>>>>>> a4a70a69f7f9c4f80811af6769540b622ee7319e
 
 	 private static final String FolderFaculty = "data/Faculties";
+	 private static final String DataFaculty = "data/Faculty.txt";
 
 	 public static void loadFaculty(String... information) {
 
@@ -92,7 +81,7 @@ public class Main extends Application {
          	File f = new File(DataFaculty);
          	if (f.createNewFile() || f.isFile())
          	{
-         		dataAnalyzer.loadFaculty(f, faculty.toString().split(";"));
+         		dataAnalyzer.loadUnit(f, faculty.toString().split(";"));
          		createFacultyFolder();
          	}
          	else System.err.println("Error with creating file");
@@ -101,28 +90,46 @@ public class Main extends Application {
         	System.err.println(e);
   		}
 	 }
+
 	 public static void searchFaculty(String criterium){
 
 	 }
 
-	 public static void loadCourse() {
+	 public static void loadCourse(String... inf) {
 
+		 CourseOfStudy course = new CourseOfStudy(inf[0], inf[1]);
+		 String faculty = inf[2];
+
+		 String path = FolderFaculty + "/" + faculty + "/" + "Course.txt";
+
+		 try {
+	            File f = new File(path);
+	            if (f.createNewFile() || f.isFile())
+	            	dataAnalyzer.loadUnit(f, course.toString().split(";"));
+	            else System.err.println("Error with creating file");
+	     }
+	     catch (Exception e) {
+	            System.err.println(e);
+	     }
 	 }
 
-<<<<<<< HEAD
 	 public static void searchCourse(String criterium){
 
 	 }
 
+	 private static ArrayList<String> getAll(String path) throws IOException {
 
-	 private static final String DataStudent = "data/Student.txt";
-	 private static final String DataFaculty = "data/Faculty.txt";
-	 private static final String DataTeacher = "data/Teacher.txt";
-=======
-	 public static void loadSubject(String... inf) {
->>>>>>> a4a70a69f7f9c4f80811af6769540b622ee7319e
+		 File f = new File(path);
+		 String[] s = dataAnalyzer.readFile(f).split("\r\n");
+		 return new ArrayList<String>(Arrays.asList(s));
+	 }
 
-		 CourseOfStudy course = new CourseOfStudy(inf[0], inf[1]);
+	 public static ArrayList<String> getAllFaculties() throws IOException {
+		 return getAll(DataFaculty);
+	 }
+
+	 public static void loadSubject() {
+
 	 }
 
 	 private static void createFacultyFolder() throws FileNotFoundException {
