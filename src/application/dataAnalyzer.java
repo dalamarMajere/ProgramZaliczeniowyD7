@@ -5,7 +5,7 @@ import java.util.*;
 
 public class dataAnalyzer {
 
-	public static void loadFaculty(File file, String[] toWrite) throws IOException {
+	public static void loadUnit(File file, String[] toWrite) throws IOException {
 
 		Scanner read = new Scanner(file);
 
@@ -30,6 +30,10 @@ public class dataAnalyzer {
 		rewrite(file, sb.toString());
 
 		read.close();
+	}
+
+	public static void loadSubject() {
+
 	}
 
 	public static void loadObject(File file, String object) throws IOException {
