@@ -2,14 +2,13 @@ package application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
@@ -44,10 +43,20 @@ public class Main extends Application {
 		 loadObject(DataStudent, student.toString());
 	 }
 
+	 public static String searchStudent(String criterium) throws IOException{
+		String filter = dataAnalyzer.filterFile(new File(DataStudent),criterium);
+
+		return filter;
+	 }
+
 	 public static void loadTeacher(String... information) {
 
 		 //Teacher teacher = new Teacher(information);
 		 //loadObject(DataTeacher, teacher.toString())
+	 }
+
+	 public static void searchTeacher(String criterium){
+
 	 }
 
 	 private static void createFacultyFolder() throws FileNotFoundException {
@@ -89,10 +98,18 @@ public class Main extends Application {
         	System.err.println(e);
   		}
 	 }
+	 public static void searchFaculty(String criterium){
+
+	 }
 
 	 public static void loadCourse() {
 
 	 }
+
+	 public static void searchCourse(String criterium){
+
+	 }
+
 
 	 private static final String DataStudent = "data/Student.txt";
 	 private static final String DataFaculty = "data/Faculty.txt";
