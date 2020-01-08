@@ -25,6 +25,13 @@ public class Main extends Application {
 	        primaryStage.show();
 	 }
 
+	 /*
+	  * PERSON, STUDENT, TEACHER
+	  */
+	 private static final String DataStudent = "data/Student.txt";
+	 private static final String DataFaculty = "data/Faculty.txt";
+	 private static final String DataTeacher = "data/Teacher.txt";
+
 	 public static void loadObject(String path, String information) {
 
 		 try {
@@ -50,28 +57,11 @@ public class Main extends Application {
 		 //loadObject(DataTeacher, teacher.toString())
 	 }
 
-	 private static void createFacultyFolder() throws FileNotFoundException {
+	 /*
+	  * FACULTY, COURSE, SUBJECT
+	  */
 
-		 createFolder(FolderFaculty);
-
-		 File f = new File(DataFaculty);
-		 Scanner in = new Scanner(f);
-
-		 String tmp;
-
-		 while (in.hasNextLine()) {
-
-			 tmp = in.nextLine().split(";")[1];
-			 createFolder(FolderFaculty + "\\" + tmp);
-		 }
-		 in.close();
-	 }
-
-	 private static void createFolder(String path) throws FileNotFoundException {
-
-		 File f = new File(path);
-		 f.mkdir();
-	 }
+	 private static final String FolderFaculty = "data/Faculties";
 
 	 public static void loadFaculty(String... information) {
 
@@ -94,9 +84,31 @@ public class Main extends Application {
 
 	 }
 
-	 private static final String DataStudent = "data/Student.txt";
-	 private static final String DataFaculty = "data/Faculty.txt";
-	 private static final String DataTeacher = "data/Teacher.txt";
+	 public static void loadSubject(String... inf) {
 
-	 private static final String FolderFaculty = "data/Faculties";
+		 CourseOfStudy course = new CourseOfStudy(inf[0], inf[1]);
+	 }
+
+	 private static void createFacultyFolder() throws FileNotFoundException {
+
+		 createFolder(FolderFaculty);
+
+		 File f = new File(DataFaculty);
+		 Scanner in = new Scanner(f);
+
+		 String tmp;
+
+		 while (in.hasNextLine()) {
+
+			 tmp = in.nextLine().split(";")[1];
+			 createFolder(FolderFaculty + "\\" + tmp);
+		 }
+		 in.close();
+	 }
+
+	 private static void createFolder(String path) throws FileNotFoundException {
+
+		 File f = new File(path);
+		 f.mkdir();
+	 }
 }
