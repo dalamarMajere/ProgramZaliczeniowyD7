@@ -5,6 +5,13 @@ import java.util.*;
 
 public class dataAnalyzer {
 
+	 public static String readFile(File file) throws IOException{
+		RandomAccessFile raf= new RandomAccessFile(file,"rw");
+		byte output[] = new byte[(int) file.length()];
+		raf.read(output);
+		return new String(output);
+	 }
+
 	public static void loadFaculty(File file, String[] toWrite) throws IOException {
 
 		Scanner read = new Scanner(file);
@@ -30,6 +37,22 @@ public class dataAnalyzer {
 		rewrite(file, sb.toString());
 
 		read.close();
+	}
+
+	public static String filterFile(File file, String criterium) throws IOException{
+
+		StringBuilder sb = new StringBuilder();
+		String textOutput = readFile(file);
+		String objects[] = textOutput.split( "\r\n" );
+
+		for(int i = 0 ; i < objects.length ; i++){
+			if( objects[i].contains( criterium )){
+				appendToSB( sb , objects[i] );
+			}
+		}
+
+		return sb.toString();
+
 	}
 
 	public static void loadObject(File file, String object) throws IOException {
