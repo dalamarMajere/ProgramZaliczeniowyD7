@@ -4,16 +4,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="1000.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
-      <TitledPane alignment="TOP_LEFT" text="Studenci">
+      <TitledPane alignment="TOP_LEFT" text="Studenci ( Student )">
          <content>
             <VBox>
                <children>
@@ -55,25 +53,12 @@
                      <children>
                         <HBox prefHeight="25.0" prefWidth="839.0">
                            <children>
-                              <VBox prefHeight="34.0" prefWidth="156.0">
-                                 <children>
-                                    <RadioButton fx:id="studentActiveRadio" mnemonicParsing="false" onAction="#studentActivityRadioAction" prefHeight="17.0" prefWidth="88.0" text="Aktywny">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="studentActivityRadio" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton fx:id="studentNotActiveRadio" mnemonicParsing="false" onAction="#studentActivityRadioAction" text="Nieaktywny" toggleGroup="$studentActivityRadio" />
-                                 </children>
-                                 <padding>
-                                    <Insets left="25.0" />
-                                 </padding>
-                              </VBox>
                               <TextField fx:id="studentIdLabel" prefHeight="25.0" prefWidth="120.0" promptText="nr indeksu" />
                               <TextField fx:id="studentSurnameLabel" promptText="nazwisko" />
                               <TextField fx:id="studentNameLabel" promptText="imie" />
                               <TextField fx:id="studentSecondNameLabel" promptText="drugie imię" />
                               <TextField fx:id="studentBirthDateLabel" promptText="data urodzenia" />
-                              <TextField fx:id="studentUnitLabel" promptText="wydział" />
+                              <ChoiceBox fx:id="studentFacultyChoiceBox" prefWidth="150.0" />
                               <TextField fx:id="studentSemesterLabel" prefHeight="25.0" prefWidth="163.0" promptText="semestr">
                                  <HBox.margin>
                                     <Insets />
@@ -92,20 +77,7 @@
                   </Label>
                   <HBox>
                      <children>
-                        <VBox prefHeight="34.0" prefWidth="90.0">
-                           <children>
-                              <RadioButton fx:id="studentSubjectActiveRadio" mnemonicParsing="false" onAction="#studentSubjectActivityRadioAction" text="Aktywny">
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="studentSubjectActivityRadio" />
-                                 </toggleGroup>
-                              </RadioButton>
-                              <RadioButton fx:id="studentSubjectNotActiveRadio" mnemonicParsing="false" onAction="#studentSubjectActivityRadioAction" text="Nieaktywny" toggleGroup="$studentSubjectActivityRadio" />
-                           </children>
-                           <HBox.margin>
-                              <Insets left="25.0" />
-                           </HBox.margin>
-                        </VBox>
-                        <TextField fx:id="studentGradesLabel" prefHeight="25.0" prefWidth="735.0" promptText="oceny">
+                        <TextField fx:id="studentGradesLabel" prefHeight="25.0" prefWidth="840.0" promptText="oceny">
                            <HBox.margin>
                               <Insets top="4.0" />
                            </HBox.margin>
@@ -129,7 +101,7 @@
             </VBox>
          </content>
       </TitledPane>
-      <TitledPane text="Pracownicy">
+      <TitledPane text="Pracownicy ( Teacher )">
          <content>
             <VBox>
                <children>
@@ -171,19 +143,6 @@
                      <children>
                         <HBox prefHeight="25.0" prefWidth="840.0">
                            <children>
-                              <VBox prefHeight="34.0" prefWidth="90.0">
-                                 <children>
-                                    <RadioButton fx:id="employeeActiveRadio" mnemonicParsing="false" onAction="#employeeActivityRadioAction" text="Aktywny">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="employeeActivityRadio" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton fx:id="employeeNotActiveRadio" mnemonicParsing="false" onAction="#employeeActivityRadioAction" text="Nieaktywny" toggleGroup="$employeeActivityRadio" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </VBox>
                               <TextField fx:id="employeeIdLabel" promptText="ID" />
                               <TextField fx:id="employeeTitleLabel" promptText="tytuł" />
                               <TextField fx:id="employeeSurnameLabel" promptText="nazwisko" />
@@ -205,26 +164,8 @@
                         <Button mnemonicParsing="false" onAction="#employeeAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
                      </children>
                   </HBox>
-                  <Label prefHeight="17.0" prefWidth="68.0" text="Przedmiot">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </Label>
                   <HBox>
                      <children>
-                        <VBox prefHeight="34.0" prefWidth="841.0">
-                           <children>
-                              <RadioButton fx:id="employeeSubjectActiveRadio" mnemonicParsing="false" onAction="#employeeSubjectActivityRadioAction" text="Aktywny">
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="employeeSubjectActivityRadio" />
-                                 </toggleGroup>
-                              </RadioButton>
-                              <RadioButton fx:id="employeeSubjectNotActiveRadio" mnemonicParsing="false" onAction="#employeeSubjectActivityRadioAction" text="Nieaktywny" toggleGroup="$employeeSubjectActivityRadio" />
-                           </children>
-                           <padding>
-                              <Insets left="25.0" />
-                           </padding>
-                        </VBox>
                         <Button mnemonicParsing="false" onAction="#employeeSubjectSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz">
                            <HBox.margin>
                               <Insets top="4.0" />
@@ -241,78 +182,9 @@
             </VBox>
          </content>
       </TitledPane>
-      <TitledPane text="Jednostki Organizacyjne">
+      <TitledPane animated="false" text="Przedmioty ( Subject )">
          <content>
             <VBox>
-               <children>
-                  <HBox>
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="140.0" text="Wyszukaj Jednostkę">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="unitCriteriumLabel" prefHeight="25.0" prefWidth="160.0" promptText="kryteria">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" onAction="#unitSearchButtonAction" text="Szukaj" />
-                        <Button mnemonicParsing="false" onAction="#unitAddButtonAction" text="+">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <ChoiceBox fx:id="unitChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                        <ChoiceBox fx:id="unitSubjectChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                     </children>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </HBox>
-                  <Label text="Informacje Jednostki Organizacyjnej ">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </Label>
-                  <HBox>
-                     <children>
-                        <HBox prefHeight="41.0" prefWidth="838.0">
-                           <children>
-                              <VBox prefHeight="34.0" prefWidth="89.0">
-                                 <children>
-                                    <RadioButton fx:id="unitActiveRadio" mnemonicParsing="false" onAction="#unitActivityRadioAction" text="Aktywny">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="unitActivityRadio" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton fx:id="unitNotActiveRadio" mnemonicParsing="false" onAction="#unitActivityRadioAction" text="Nieaktywny" toggleGroup="$unitActivityRadio" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <TextField fx:id="unitIdLabel" prefHeight="25.0" prefWidth="56.0" promptText="ID" />
-                              <TextField fx:id="unitNameLabel" prefHeight="25.0" prefWidth="673.0" promptText="nazwa" />
-                           </children>
-                        </HBox>
-                        <Button mnemonicParsing="false" onAction="#unitSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
-                        <Button mnemonicParsing="false" onAction="#unitAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </content></TitledPane>
-      <TitledPane animated="false" text="Przedmioty">
-         <content>
-            <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <HBox>
                      <children>
@@ -351,16 +223,6 @@
                      <children>
                         <HBox prefHeight="34.0" prefWidth="810.0">
                            <children>
-                              <VBox prefHeight="34.0" prefWidth="87.0">
-                                 <children>
-                                    <RadioButton fx:id="subjectActiveRadio" mnemonicParsing="false" onAction="#subjectActivityRadioAction" text="Aktywny">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="subjectActivityRadio" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton fx:id="subjectNotActiveRadio" mnemonicParsing="false" onAction="#subjectActivityRadioAction" text="Nieaktywny" toggleGroup="$subjectActivityRadio" />
-                                 </children>
-                              </VBox>
                               <TextField fx:id="subjectNameLabel" prefHeight="25.0" prefWidth="344.0" promptText="nazwa" />
                               <ChoiceBox fx:id="subjectUnitChoiceBox" prefHeight="25.0" prefWidth="382.0" />
                            </children>
@@ -376,5 +238,118 @@
             </VBox>
          </content>
       </TitledPane>
+      <TitledPane animated="false" text="Kierunki ( Course )">
+         <content>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="140.0" text="Wyszukaj Kierunek">
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="courseCriteriumLabel" prefHeight="25.0" prefWidth="160.0" promptText="kryteria">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#courseSearchButtonAction" text="Szukaj" />
+                        <Button mnemonicParsing="false" onAction="#courseAddButtonAction" text="+">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <ChoiceBox fx:id="courseChoicebox" prefHeight="25.0" prefWidth="720.0" />
+                        <ChoiceBox fx:id="courseSubjectChoicebox" prefHeight="25.0" prefWidth="720.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <Label text="Informacje Kierunku">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+                  <HBox>
+                     <children>
+                        <HBox prefHeight="41.0" prefWidth="838.0">
+                           <children>
+                              <TextField fx:id="courseIdLabel" prefHeight="25.0" prefWidth="56.0" promptText="ID" />
+                              <TextField fx:id="courseNameLabel" prefHeight="25.0" prefWidth="673.0" promptText="nazwa" />
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#courseSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
+                        <Button mnemonicParsing="false" onAction="#courseAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </TitledPane>
+      <TitledPane text="Wydziały ( Faculty )">
+         <content>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="140.0" text="Wyszukaj Wydział">
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="facultyCriteriumLabel" prefHeight="25.0" prefWidth="160.0" promptText="kryteria">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#facultySearchButtonAction" text="Szukaj" />
+                        <Button mnemonicParsing="false" onAction="#facultyAddButtonAction" text="+">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <ChoiceBox fx:id="facultyChoicebox" prefHeight="25.0" prefWidth="720.0" />
+                        <ChoiceBox fx:id="facultyCourseChoicebox" prefHeight="25.0" prefWidth="720.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <Label text="Informacje Wydziału">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+                  <HBox>
+                     <children>
+                        <HBox prefHeight="41.0" prefWidth="838.0">
+                           <children>
+                              <TextField fx:id="facultyIdLabel" prefHeight="25.0" prefWidth="56.0" promptText="ID" />
+                              <TextField fx:id="facultyNameLabel" prefHeight="25.0" prefWidth="673.0" promptText="nazwa" />
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#facultySaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
+                        <Button mnemonicParsing="false" onAction="#facultyAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content></TitledPane>
    </children>
 </VBox>

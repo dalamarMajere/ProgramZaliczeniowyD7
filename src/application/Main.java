@@ -49,6 +49,8 @@ public class Main extends Application {
 	 }
 
 	 private static final String DataStudent = "data/Student.txt";
-	 private static final String DataStudent = "data/Faculty.txt";
+	 private static final String DataFaculty = "data/Faculty.txt";
 	 private static final String DataTeacher = "data/Teacher.txt";
+
+
 }
