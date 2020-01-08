@@ -118,6 +118,9 @@ public class Controller implements Initializable {
 
 		    public void facultyAddButtonAction() {
 
+		    	String id = facultyIdLabel.getText();
+		        String name = facultyNameLabel.getText();
+		        Main.loadFaculty(id, name);
 		    }
 
 

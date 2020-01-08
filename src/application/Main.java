@@ -1,6 +1,8 @@
 package application;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -48,9 +50,53 @@ public class Main extends Application {
 		 //loadObject(DataTeacher, teacher.toString())
 	 }
 
+	 private static void createFacultyFolder() throws FileNotFoundException {
+
+		 createFolder(FolderFaculty);
+
+		 File f = new File(DataFaculty);
+		 Scanner in = new Scanner(f);
+
+		 String tmp;
+
+		 while (in.hasNextLine()) {
+
+			 tmp = in.nextLine().split(";")[1];
+			 createFolder(FolderFaculty + "\\" + tmp);
+		 }
+		 in.close();
+	 }
+
+	 private static void createFolder(String path) throws FileNotFoundException {
+
+		 File f = new File(path);
+		 f.mkdir();
+	 }
+
+	 public static void loadFaculty(String... information) {
+
+		 Faculty faculty = new Faculty(information);
+		 try {
+         	File f = new File(DataFaculty);
+         	if (f.createNewFile() || f.isFile())
+         	{
+         		dataAnalyzer.loadFaculty(f, faculty.toString().split(";"));
+         		createFacultyFolder();
+         	}
+         	else System.err.println("Error with creating file");
+  		}
+  		catch (Exception e) {
+        	System.err.println(e);
+  		}
+	 }
+
+	 public static void loadCourse() {
+
+	 }
+
 	 private static final String DataStudent = "data/Student.txt";
 	 private static final String DataFaculty = "data/Faculty.txt";
 	 private static final String DataTeacher = "data/Teacher.txt";
 
-
+	 private static final String FolderFaculty = "data/Faculties";
 }
