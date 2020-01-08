@@ -6,11 +6,16 @@ public class CourseOfStudy {
 	private String name;
 	private String type;
 
-	public CourseOfStudy(String id, String name, String type){
+	public CourseOfStudy(String... inf) {
+
+		//		id, 	name
+		this(inf[0], inf[1]);
+	}
+
+	public CourseOfStudy(String id, String name){
 
 		this.id=id;
 		this.name=name;
-		this.type=type;
 	}
 
 	public String getId(){
