@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.HBox?>
@@ -28,23 +29,13 @@
                            </HBox.margin>
                         </TextField>
                         <Button mnemonicParsing="false" onAction="#studentSearchButtonAction" text="Szukaj" />
-                        <Button mnemonicParsing="false" onAction="#studentAddButtonAction" text="+">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox>
-                     <children>
-                        <ChoiceBox fx:id="studentChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                        <ChoiceBox fx:id="studentSubjectChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                     </children>
-                  </HBox>
-                  <Label text="Informacje Studenta">
+                  <TextArea fx:id="studentTextArea" prefHeight="10.0" prefWidth="978.0" />
+                  <Label text="Nowy Student">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -59,6 +50,7 @@
                               <TextField fx:id="studentSecondNameLabel" promptText="drugie imię" />
                               <TextField fx:id="studentBirthDateLabel" promptText="data urodzenia" />
                               <ChoiceBox fx:id="studentFacultyChoiceBox" prefWidth="150.0" />
+                              <ChoiceBox fx:id="studentCourseChoiceBox" prefWidth="150.0" />
                               <TextField fx:id="studentSemesterLabel" prefHeight="25.0" prefWidth="163.0" promptText="semestr">
                                  <HBox.margin>
                                     <Insets />
@@ -66,36 +58,8 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#studentInfoSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
-                        <Button mnemonicParsing="false" onAction="#studentInfoAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
+                        <Button mnemonicParsing="false" onAction="#studentAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />
                      </children>
-                  </HBox>
-                  <Label prefHeight="17.0" prefWidth="68.0" text="Przedmiot">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <HBox>
-                     <children>
-                        <TextField fx:id="studentGradesLabel" prefHeight="25.0" prefWidth="840.0" promptText="oceny">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" onAction="#studentGradeSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#studentGradeAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
@@ -118,23 +82,14 @@
                            </HBox.margin>
                         </TextField>
                         <Button mnemonicParsing="false" onAction="#employeeSearchButtonAction" text="Szukaj" />
-                        <Button mnemonicParsing="false" onAction="#employeeAddButtonAction" text="+">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox>
-                     <children>
-                        <ChoiceBox fx:id="employeeChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                        <ChoiceBox fx:id="employeeSubjectChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                     </children>
-                  </HBox>
-                  <Label text="Informacje Pracownika">
+                  <TextArea fx:id="employeeTextArea" prefHeight="0.0" prefWidth="978.0" />
+                  <HBox />
+                  <Label text="Nowy Pracownik">
                      <padding>
                         <Insets top="10.0" />
                      </padding>
@@ -160,24 +115,10 @@
                               <Insets left="25.0" />
                            </padding>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#employeeSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
-                        <Button mnemonicParsing="false" onAction="#employeeAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
+                        <Button mnemonicParsing="false" onAction="#employeeAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />
                      </children>
                   </HBox>
-                  <HBox>
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#employeeSubjectSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#employeeSubjectAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  <HBox />
                </children>
             </VBox>
          </content>
@@ -203,18 +144,13 @@
                               <Insets />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#subjectAddButtonAction" text="+">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <ChoiceBox fx:id="subjectChoicebox" prefHeight="25.0" prefWidth="985.0" />
-                  <Label text="Informacje o Przedmiocie ">
+                  <TextArea fx:id="subjectTextArea" prefHeight="0.0" prefWidth="978.0" />
+                  <Label text="Nowy Przedmiot">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -224,11 +160,10 @@
                         <HBox prefHeight="34.0" prefWidth="810.0">
                            <children>
                               <TextField fx:id="subjectNameLabel" prefHeight="25.0" prefWidth="344.0" promptText="nazwa" />
-                              <ChoiceBox fx:id="subjectUnitChoiceBox" prefHeight="25.0" prefWidth="382.0" />
+                              <ChoiceBox fx:id="subjectUnitChoiceBox" prefHeight="25.0" prefWidth="392.0" />
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#subjectSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
-                        <Button mnemonicParsing="false" onAction="#subjectAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
+                        <Button mnemonicParsing="false" onAction="#subjectAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />
                      </children>
                      <padding>
                         <Insets left="25.0" />
@@ -255,23 +190,14 @@
                            </HBox.margin>
                         </TextField>
                         <Button mnemonicParsing="false" onAction="#courseSearchButtonAction" text="Szukaj" />
-                        <Button mnemonicParsing="false" onAction="#courseAddButtonAction" text="+">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                   </HBox>
-                  <HBox>
-                     <children>
-                        <ChoiceBox fx:id="courseChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                        <ChoiceBox fx:id="courseSubjectChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                     </children>
-                     <padding>
+                  <TextArea fx:id="courseTextArea" prefHeight="0.0" prefWidth="978.0">
+                     <VBox.margin>
                         <Insets top="10.0" />
-                     </padding>
-                  </HBox>
-                  <Label text="Informacje Kierunku">
+                     </VBox.margin>
+                  </TextArea>
+                  <Label text="Nowy Kierunek">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -284,11 +210,10 @@
                         <HBox prefHeight="41.0" prefWidth="838.0">
                            <children>
                               <TextField fx:id="courseIdLabel" prefHeight="25.0" prefWidth="56.0" promptText="ID" />
-                              <TextField fx:id="courseNameLabel" prefHeight="25.0" prefWidth="673.0" promptText="nazwa" />
+                              <TextField fx:id="courseNameLabel" prefHeight="25.0" prefWidth="706.0" promptText="nazwa" />
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#courseSaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
-                        <Button mnemonicParsing="false" onAction="#courseAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
+                        <Button mnemonicParsing="false" onAction="#courseAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />
                      </children>
                   </HBox>
                </children>
@@ -312,23 +237,15 @@
                            </HBox.margin>
                         </TextField>
                         <Button mnemonicParsing="false" onAction="#facultySearchButtonAction" text="Szukaj" />
-                        <Button mnemonicParsing="false" onAction="#facultyAddButtonAction" text="+">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                   </HBox>
                   <HBox>
-                     <children>
-                        <ChoiceBox fx:id="facultyChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                        <ChoiceBox fx:id="facultyCourseChoicebox" prefHeight="25.0" prefWidth="720.0" />
-                     </children>
                      <padding>
                         <Insets top="10.0" />
                      </padding>
                   </HBox>
-                  <Label text="Informacje Wydziału">
+                  <TextArea fx:id="facultyTextArea" prefHeight="0.0" prefWidth="978.0" />
+                  <Label text="Nowy Wydział">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -341,11 +258,10 @@
                         <HBox prefHeight="41.0" prefWidth="838.0">
                            <children>
                               <TextField fx:id="facultyIdLabel" prefHeight="25.0" prefWidth="56.0" promptText="ID" />
-                              <TextField fx:id="facultyNameLabel" prefHeight="25.0" prefWidth="673.0" promptText="nazwa" />
+                              <TextField fx:id="facultyNameLabel" prefHeight="25.0" prefWidth="705.0" promptText="nazwa" />
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#facultySaveButtonAction" prefHeight="25.0" prefWidth="71.0" text="Zapisz" />
-                        <Button mnemonicParsing="false" onAction="#facultyAbortButtonAction" prefHeight="25.0" prefWidth="71.0" text="Odrzuć" />
+                        <Button mnemonicParsing="false" onAction="#facultyAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />
                      </children>
                   </HBox>
                </children>
