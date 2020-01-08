@@ -1,5 +1,7 @@
 package application;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import java.net.URL;
@@ -95,10 +97,14 @@ public class Controller implements Initializable {
 	    public TextArea courseTextArea;
 	    public TextField courseIdLabel;
 	    public TextField courseNameLabel;
-	    public ChoiceBox<?> courseFacultyChoiceBox;
+	    public ChoiceBox<String> courseFacultyChoiceBox;
 
 		    public void courseAddButtonAction() {
 
+		    	String faculty = courseFacultyChoiceBox.getValue();
+		    	String id = courseIdLabel.getText();
+		    	String name = courseNameLabel.getText();
+		    	Main.loadCourse(id, name, faculty);
 		    }
 
 
@@ -122,6 +128,8 @@ public class Controller implements Initializable {
 		    	String id = facultyIdLabel.getText();
 		        String name = facultyNameLabel.getText();
 		        Main.loadFaculty(id, name);
+		        courseFacultyChoiceBox.setItems(FXCollections.
+		        					observableArrayList(Main.getAllFaculties()));
 		    }
 
 
