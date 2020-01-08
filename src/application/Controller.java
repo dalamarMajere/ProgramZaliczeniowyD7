@@ -1,7 +1,7 @@
 package application;
 
 import javafx.fxml.Initializable;
-import java.awt.TextArea;
+import javafx.scene.control.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.ChoiceBox;
