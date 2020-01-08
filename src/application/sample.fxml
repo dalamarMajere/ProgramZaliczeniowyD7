@@ -111,9 +111,6 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
-                           <padding>
-                              <Insets left="25.0" />
-                           </padding>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#employeeAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />
                      </children>
@@ -157,17 +154,14 @@
                   </Label>
                   <HBox>
                      <children>
-                        <HBox prefHeight="34.0" prefWidth="810.0">
+                        <HBox prefHeight="34.0" prefWidth="840.0">
                            <children>
                               <TextField fx:id="subjectNameLabel" prefHeight="25.0" prefWidth="344.0" promptText="nazwa" />
-                              <ChoiceBox fx:id="subjectUnitChoiceBox" prefHeight="25.0" prefWidth="392.0" />
+                              <ChoiceBox fx:id="subjectFacultyChoiceBox" prefHeight="25.0" prefWidth="392.0" />
                            </children>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#subjectAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />
                      </children>
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
                   </HBox>
                </children>
             </VBox>
@@ -209,8 +203,9 @@
                      <children>
                         <HBox prefHeight="41.0" prefWidth="838.0">
                            <children>
-                              <TextField fx:id="courseIdLabel" prefHeight="25.0" prefWidth="56.0" promptText="ID" />
-                              <TextField fx:id="courseNameLabel" prefHeight="25.0" prefWidth="706.0" promptText="nazwa" />
+                              <TextField fx:id="courseIdLabel" prefHeight="25.0" prefWidth="82.0" promptText="ID" />
+                              <TextField fx:id="courseNameLabel" prefHeight="25.0" prefWidth="261.0" promptText="nazwa" />
+                              <ChoiceBox fx:id="courseFacultyChoiceBox" prefHeight="25.0" prefWidth="402.0" />
                            </children>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#courseAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />

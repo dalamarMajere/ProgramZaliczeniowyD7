@@ -75,7 +75,7 @@ public class Controller implements Initializable {
 	    public TextField subjectCryteriumLabel;
 	    public TextArea subjectTextArea;
 	    public TextField subjectNameLabel;
-	    public ChoiceBox<?> subjectUnitChoiceBox;
+	    public ChoiceBox<?> subjectFacultyChoiceBox;
 
 
 		    public void subjectAddButtonAction() {
@@ -95,6 +95,7 @@ public class Controller implements Initializable {
 	    public TextArea courseTextArea;
 	    public TextField courseIdLabel;
 	    public TextField courseNameLabel;
+	    public ChoiceBox<?> courseFacultyChoiceBox;
 
 		    public void courseAddButtonAction() {
 
