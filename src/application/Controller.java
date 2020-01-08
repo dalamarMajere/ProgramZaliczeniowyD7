@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -25,220 +24,179 @@ public class Controller implements Initializable {
      * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
      */
 
-	@FXML
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("View is now loaded!");
     }
 
-    /*
-     * STUDENT
-     */
 
-    private VBox vbox;
-    public TextField studentCryteriumLabel;
-    public ChoiceBox<String> studentChoicebox;
-    public ChoiceBox<String> studentSubjectChoicebox;
+	    public VBox vbox;
 
-	    public void studentSearchButtonAction(){
-	    	String container = studentCryteriumLabel.getText();
-	    	System.out.println("Searching for.. "+container);
+	    /*
+	     * STUDENT
+	     */
+	    public TextField studentCryteriumLabel;
+		public ChoiceBox<String> studentChoicebox;
+		public ChoiceBox<String> studentSubjectChoicebox;
+	    public TextField studentIdLabel;
+	    public TextField studentSurnameLabel;
+	    public TextField studentNameLabel;
+	    public TextField studentSecondNameLabel;
+	    public TextField studentBirthDateLabel;
+	    public ChoiceBox<String> studentFacultyChoiceBox;
+	    public TextField studentSemesterLabel;
+	    public TextField studentGradesLabel;
 
-	    	ObservableList<String> list = FXCollections.observableArrayList(container);
+		    public void studentAddButtonAction() {
 
-	    	studentChoicebox.setItems(list);
-	    	studentChoicebox.setValue(list.get(0));
+		    	String container = studentCryteriumLabel.getText();
+		    	System.out.println("Searching for.. "+container);
+		    	ObservableList<String> list = FXCollections.observableArrayList(container);
+		    	studentChoicebox.setItems(list);
+		    	studentChoicebox.setValue(list.get(0));
 
-	    }
+		    }
 
-	    public void studentAddButtonAction(){
+		    public void studentSearchButtonAction() {
 
-	    	studentIdLabel.setText("0");
-	        studentSurnameLabel.setText("A");
-	        studentNameLabel.setText("A");
-	        studentSecondNameLabel.setText("A");
-	        studentBirthDateLabel.setText("01.01.1899");
-	        studentUnitLabel.setText("A");
-	        studentSemesterLabel.setText("0");
-	    }
+		    }
 
+		    public void studentInfoAbortButtonAction() {
 
-	public ToggleGroup studentActivityRadio;
-	public RadioButton studentActiveRadio;
-	public RadioButton studentNotActiveRadio;
+		    }
 
-	    public void studentActivityRadioAction(){
 
-	    }
+		    public void studentInfoSaveButtonAction() {
 
+		    }
 
-	public TextField studentIdLabel;
-    public TextField studentSurnameLabel;
-    public TextField studentNameLabel;
-    public TextField studentSecondNameLabel;
-    public TextField studentBirthDateLabel;
-    public TextField studentUnitLabel;
-    public TextField studentSemesterLabel;
 
-	    public void studentInfoSaveButtonAction(){
+		    public void studentGradeAbortButtonAction() {
 
-	    	String id = studentIdLabel.getText();
-	        String surname = studentSurnameLabel.getText();
-	        String name = studentNameLabel.getText();
-	        String secondName = studentSecondNameLabel.getText();
-	        String birthDate = studentBirthDateLabel.getText();
-	        String unit = studentUnitLabel.getText();
-	        String semester = studentSemesterLabel.getText();
-	        Main.loadStudent(id, surname, name, secondName, birthDate, unit, semester);
-	    }
+		    }
 
-	    public void studentInfoAbortButtonAction(){
+		    public void studentGradeSaveButtonAction() {
 
-	    	studentAddButtonAction();
-	    }
+		    }
 
-	public ToggleGroup studentSubjectActivityRadio;
-	public RadioButton studentSubjectActiveRadio;
-	public RadioButton studentSubjectNotActiveRadio;
+	    /*
+		 * TEACHER
+		 */
+		public TextField employeeCryteriumLabel;
+	    public ChoiceBox<?> employeeChoicebox;
+	    public ChoiceBox<?> employeeSubjectChoicebox;
+	    public TextField employeeIdLabel;
+	    public TextField employeeTitleLabel;
+	    public TextField employeeSurnameLabel;
+	    public TextField employeeNameLabel;
+	    public TextField employeeBirthDate;
 
-	    public void studentSubjectActivityRadioAction(){
+			public void employeeAbortButtonAction() {
 
-	    }
+		    }
 
-    private TextField studentGradesLabel;
 
-	    public void studentGradeSaveButtonAction(){
+		    public void employeeAddButtonAction() {
 
-	    }
+		    }
 
-	    public void studentGradeAbortButtonAction(){
 
-	    }
+		    public void employeeSaveButtonAction() {
 
-    /*
-     * EMPLOYEE
-     */
+		    }
 
-	public TextField employeeCryteriumLabel;
-    public ChoiceBox<?> employeeChoicebox;
-    public ChoiceBox<?> employeeSubjectChoicebox;
 
-	    public void employeeSearchButtonAction(){
+		    public void employeeSearchButtonAction() {
 
-	    }
+		    }
 
-	    public void employeeAddButtonAction(){
 
-	    }
+		    public void employeeSubjectAbortButtonAction() {
 
-	    public ToggleGroup employeeActivityRadio;
-	    public RadioButton employeeActiveRadio;
-	    public RadioButton employeeNotActiveRadio;
+		    }
 
-	    public void employeeActivityRadioAction(){
 
-	    }
+		    public void employeeSubjectSaveButtonAction() {
 
-	public TextField employeeIdLabel;
-	public TextField employeeTitleLabel;
-    public TextField employeeSurnameLabel;
-    public TextField employeeNameLabel;
-    public TextField employeeBirthDateLabel;
+		    }
 
-	    public void employeeSaveButtonAction(){
-	    	String id = employeeIdLabel.getText();
-	        String surname = employeeSurnameLabel.getText();
-	        String name = employeeNameLabel.getText();
-	        String birthDate = employeeBirthDateLabel.getText();
-	        String tittle = employeeTitleLabel.getText();
-	        Main.loadTeacher(id, tittle, surname, name, birthDate);
-	    }
+	    /*
+	     * SUBJECT
+	     */
+	    public TextField subjectCryteriumLabel;
+	    public ChoiceBox<?> subjectChoicebox;
+	    public TextField subjectNameLabel;
+	    public ChoiceBox<?> subjectUnitChoiceBox;
 
-	    public void employeeAbortButtonAction(){
+		    public void subjectSearchButtonAction() {
 
-	    }
+		    }
 
-	public RadioButton employeeSubjectActiveRadio;
-    public ToggleGroup employeeSubjectActivityRadio;
-    public RadioButton employeeSubjectNotActiveRadio;
+		    public void subjectAddButtonAction() {
 
-	    public void employeeSubjectActivityRadioAction(){
+		    }
 
-	    }
+		    public void subjectAbortButtonAction() {
 
-	    public void employeeSubjectSaveButtonAction(){
+		    }
 
-	    }
+		    public void subjectSaveButtonAction() {
 
-	    public void employeeSubjectAbortButtonAction(){
+		    }
 
-	    }
+	    /*
+	     * COURSE
+	     */
 
-    /*
-     * UNIT
-     */
-	public TextField unitCriteriumLabel;
-    public ChoiceBox<?> unitChoicebox;
-    public ChoiceBox<?> unitSubjectChoicebox;
+	    public TextField courseCriteriumLabel;
+	    public ChoiceBox<?> courseChoicebox;
+	    public ChoiceBox<?> courseSubjectChoicebox;
+	    public TextField courseIdLabel;
+	    public TextField courseNameLabel;
 
-	    public void unitSearchButtonAction(){
+		    public void courseSearchButtonAction() {
 
-	    }
+		    }
 
-	    public void unitAddButtonAction(){
+		    public void courseAddButtonAction() {
 
-	    }
+		    }
 
-	public RadioButton unitActiveRadio;
-    public ToggleGroup unitActivityRadio;
-    public RadioButton unitNotActiveRadio;
+		    public void courseAbortButtonAction() {
 
-	    public void unitActivityRadioAction(){
+		    }
 
-	    }
+		    public void courseSaveButtonAction() {
 
-	public TextField unitIdLabel;
-	public TextField unitNameLabel;
+		    }
 
-	    public void unitSaveButtonAction(){
+	    /*
+	     * FACULTY
+	     */
 
-	    }
+	    public TextField facultyCriteriumLabel;
+	    public ChoiceBox<?> facultyChoicebox;
+	    public ChoiceBox<?> facultyCourseChoicebox;
+	    public TextField facultyIdLabel;
+	    public TextField facultyNameLabel;
 
-	    public void unitAbortButtonAction(){
+	    	public void facultySearchButtonAction() {
 
-	    }
+	    	}
 
-	/*
-	 * SUBJECT
-	 */
+		    public void facultyAddButtonAction() {
 
-	public TextField subjectCryteriumLabel;
-	public ChoiceBox<?> subjectChoicebox;
+		    }
 
-	    public void subjectSearchButtonAction(){
+		    public void facultyAbortButtonAction() {
 
-	    }
+		    }
 
-	    public void subjectAddButtonAction(){
+		    public void facultySaveButtonAction() {
 
-	    }
+		    }
 
-	public RadioButton subjectActiveRadio;
-    public ToggleGroup subjectActivityRadio;
-    public RadioButton subjectNotActiveRadio;
 
-	    public void subjectActivityRadioAction(){
 
-	    }
 
-	public TextField subjectNameLabel;
-	public ChoiceBox<?> subjectUnitChoiceBox;
-
-	    public void subjectSaveButtonAction(){
-
-	    }
-
-	    public void subjectAbortButtonAction(){
-
-	    }
 
 }
