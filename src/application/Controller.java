@@ -2,6 +2,9 @@ package application;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.ChoiceBox;
@@ -43,8 +46,10 @@ public class Controller implements Initializable {
 		    }
 
 
-		    public void studentSearchButtonAction() {
-
+		    public void studentSearchButtonAction() throws IOException {
+		    	System.out.println("Searching students with criterium: "+studentCryteriumLabel.getText());
+		    	String filteredStudents = Main.searchStudent(studentCryteriumLabel.getText());
+		    	studentTextArea.setText(filteredStudents);
 		    }
 
 	    /*
