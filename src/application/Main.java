@@ -2,6 +2,8 @@ package application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import javafx.application.Application;
@@ -29,7 +31,6 @@ public class Main extends Application {
 	  * PERSON, STUDENT, TEACHER
 	  */
 	 private static final String DataStudent = "data/Student.txt";
-	 private static final String DataFaculty = "data/Faculty.txt";
 	 private static final String DataTeacher = "data/Teacher.txt";
 
 	 public static void loadObject(String path, String information) {
@@ -62,6 +63,7 @@ public class Main extends Application {
 	  */
 
 	 private static final String FolderFaculty = "data/Faculties";
+	 private static final String DataFaculty = "data/Faculty.txt";
 
 	 public static void loadFaculty(String... information) {
 
@@ -96,6 +98,18 @@ public class Main extends Application {
 	     catch (Exception e) {
 	            System.err.println(e);
 	     }
+	 }
+
+	 private static ArrayList<String> getAll(String path) {
+
+		 File f = new File(path);
+		 String[] s = dataAnalyzer.read(f).split("\r\n");
+		 return new ArrayList<String>(Arrays.asList(s));
+	 }
+
+	 public static ArrayList<String> getAllFaculties() {
+
+		 return getAll(DataFaculty);
 	 }
 
 	 public static void loadSubject() {
