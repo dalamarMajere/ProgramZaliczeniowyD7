@@ -70,7 +70,7 @@ public class Main extends Application {
          	File f = new File(DataFaculty);
          	if (f.createNewFile() || f.isFile())
          	{
-         		dataAnalyzer.loadFaculty(f, faculty.toString().split(";"));
+         		dataAnalyzer.loadUnit(f, faculty.toString().split(";"));
          		createFacultyFolder();
          	}
          	else System.err.println("Error with creating file");
@@ -80,13 +80,26 @@ public class Main extends Application {
   		}
 	 }
 
-	 public static void loadCourse() {
-
-	 }
-
-	 public static void loadSubject(String... inf) {
+	 public static void loadCourse(String... inf) {
 
 		 CourseOfStudy course = new CourseOfStudy(inf[0], inf[1]);
+		 String faculty = inf[2];
+
+		 String path = FolderFaculty + "/" + faculty + "/" + "Course.txt";
+
+		 try {
+	            File f = new File(path);
+	            if (f.createNewFile() || f.isFile())
+	            	dataAnalyzer.loadUnit(f, course.toString().split(";"));
+	            else System.err.println("Error with creating file");
+	     }
+	     catch (Exception e) {
+	            System.err.println(e);
+	     }
+	 }
+
+	 public static void loadSubject() {
+
 	 }
 
 	 private static void createFacultyFolder() throws FileNotFoundException {
@@ -101,7 +114,7 @@ public class Main extends Application {
 		 while (in.hasNextLine()) {
 
 			 tmp = in.nextLine().split(";")[1];
-			 createFolder(FolderFaculty + "\\" + tmp);
+			 createFolder(FolderFaculty + "/" + tmp);
 		 }
 		 in.close();
 	 }
