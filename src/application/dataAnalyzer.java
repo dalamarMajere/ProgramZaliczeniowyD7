@@ -5,6 +5,32 @@ import java.util.*;
 
 public class dataAnalyzer {
 
+	public static void loadFaculty(File file, String[] toWrite) throws IOException {
+
+		Scanner read = new Scanner(file);
+
+		StringBuilder sb = new StringBuilder();
+		String tmp;
+		boolean write = false;
+
+		while (read.hasNextLine()) {
+
+			tmp = read.nextLine();
+			if (!write)
+				if (toWrite[1].compareTo(tmp.split(";")[1]) < 0)
+				{
+					write = true;
+					appendToSB(sb, toWrite[0] + ";" + toWrite[1] + ";");
+				}
+			appendToSB(sb, tmp);
+		}
+		//if this is a first object
+		if (!write)
+			appendToSB(sb, toWrite[0] + ";" + toWrite[1] + ";");
+		rewrite(file, sb.toString());
+
+		read.close();
+	}
 
 	public static void loadObject(File file, String object) throws IOException {
 
@@ -38,6 +64,7 @@ public class dataAnalyzer {
 		String[] ones = one.split(";");
 		String[] twos = two.split(";");
 
+		//surname, name, secondName, birhtDate
 		for (int i = 1; i < 4; i++) {
 			if (ones[i].compareTo(twos[i]) < 0)
 				return -1;

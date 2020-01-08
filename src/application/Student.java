@@ -3,71 +3,44 @@ package application;
 import java.util.ArrayList;
 /*
  * TODO FIGURE OUT GRADES HANDLING
- * TODO toString output format
  */
 
-public class Student extends Person implements Comparable<Student> {
+public class Student extends Person {
 
-	private String unit;
+	private String faculty;
+	private String course;
 	private int semester;
-	private boolean active;
 	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 
 	public Student(int personId, String surname, String name, String secondName, String birthDate,
-					String unit, int semester, ArrayList<Subject> subjects) {
+			String faculty, String course, int semester) {
 
-			super(personId, surname, name, secondName, birthDate);
-			this.unit = unit;
-			this.semester = semester;
-			this.subjects = subjects;
-
-	}
-
-	public Student(int personId, String surname, String name, String secondName, String birthDate,
-			String unit, int semester) {
-
-		this(personId, surname, name, secondName, birthDate, unit, semester, new ArrayList<>());
+		super(personId, surname, name, secondName, birthDate);
+		this.faculty = faculty;
+		this.semester = semester;
+		this.course = course;
 	}
 
 	/*
 	 * called by dataAnalyzer, so information - String[], contains 7 elements:
-	 * Id, surname, name, second name, birth date, unit, semester
+	 * Id, surname, name, second name, birth date, faculty, course, semester
 	 */
 	public Student(String... inf) {
 
-		this(Integer.parseInt(inf[0]), inf[1], inf[2], inf[3], inf[4], inf[5], Integer.parseInt(inf[6]));
-	}
-
-	@Override
-	/**
-	 * Compares two students lexicographically. This comparison is based on the comparations:
-	 * surname (string), name (string), secondName(string)
-	 * The result is zero if these fileds are equal; if first student < second student, compareTo returns -1.
-	 */
-	public int compareTo(Student other) {
-
-		if (getSurname().compareTo(other.getSurname()) < 0 ||
-			(getSurname().compareTo(other.getSurname()) == 0 && (getName().compareTo(other.getName()) < 0 ||
-			(getName().compareTo(other.getName()) == 0 && getSecondName().compareTo(other.getSecondName()) < 0))))
-			return -1;
-		if (getSurname().compareTo(other.getSurname()) > 0 ||
-			(getSurname().compareTo(other.getSurname()) == 0 && (getName().compareTo(other.getName()) > 0 ||
-			(getName().compareTo(other.getName()) == 0 && getSecondName().compareTo(other.getSecondName()) > 0))))
-			return 1;
-		return 0;
+		this(Integer.parseInt(inf[0]), inf[1], inf[2], inf[3], inf[4], inf[5], inf[6], Integer.parseInt(inf[6]));
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + ";" + unit + ";" + semester + ";";
+		return super.toString() + ";" + faculty + ";" + course + ";" + semester + ";";
 	}
 
-	public String getUnit() {
-		return this.unit;
+	public String getFaculty() {
+		return this.faculty;
 	}
 
-	public void setUnit(String unit) {
-		this.unit = unit;
+	public void setFaculty(String unit) {
+		this.faculty = unit;
 	}
 
 	public int getSemester() {
@@ -94,13 +67,4 @@ public class Student extends Person implements Comparable<Student> {
 	public void addSubject(Subject subject) {
 		subjects.add(subject);
 	}
-
-	public boolean getActive() {
-		return this.active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
 }

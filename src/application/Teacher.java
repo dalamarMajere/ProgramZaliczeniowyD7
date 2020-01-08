@@ -6,11 +6,10 @@ public class Teacher extends Person {
 
 	private ArrayList<Subject> subjects;
 
-	public Teacher(int personId, String surname, String name, String secondName, String birthDate, ArrayList<Subject> subjects) {
+	public Teacher(int personId, String surname, String name,
+			String secondName, String birthDate) {
 
 		super(personId, surname, name, secondName, birthDate);
-
-		this.subjects = subjects;
 	}
 
 	public ArrayList<Subject> getSubjects() {

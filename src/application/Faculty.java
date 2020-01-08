@@ -5,9 +5,20 @@ public class Faculty {
 	private String id;
 	private String name;
 
+	public Faculty(String... information) {
+
+		this(information[0], information[1]);
+	}
+
 	public Faculty(String id, String name){
+
 		this.id=id;
 		this.name=name;
+	}
+
+	@Override
+	public String toString() {
+		return id + ";" + name + ";";
 	}
 
 	public String getId(){
