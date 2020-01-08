@@ -5,62 +5,44 @@ import java.util.*;
 
 public class dataAnalyzer {
 
-	private static Student splitStudentsInformation(String information) {
-
-		return new Student(information.split(";"));
-	}
-
-	public static void rewrite(File file, int position, String text) throws IOException {
-
-		System.out.println(position + " " + text);
-		//read
-		byte[] arr = new byte[(int)file.length()];
-		RandomAccessFile raf = new RandomAccessFile(file, "rw");
-		raf.read(arr);
-
-		//create string
-		StringBuilder sb = new StringBuilder(new String(arr));
-		System.out.println("BEFORE!" + sb.toString());
-		sb.insert(position, text);
-		System.out.println("AFTER!" + sb.toString());
-
-		//rewrite file
-		raf.seek(0);
-		raf.write(sb.toString().getBytes());
-		//add separator
-		//raf.write(System.lineSeparator().getBytes());
-		raf.close();
-	}
-
-	public static void loadStudent(File file, Student student) throws IOException {
+	public static void loadObject(File file, String object) throws IOException {
 
 		Scanner read = new Scanner(file);
 
-		//offset
-		int symbols = 0;
-		Student currentStudent;
+		StringBuilder sb = new StringBuilder();
 		String tmp;
+		boolean write = false;
+
+		System.out.println("New");
 		while (read.hasNextLine()) {
 
 			tmp = read.nextLine();
-			currentStudent = splitStudentsInformation(tmp);
-
-			/*
-			 * if student's surname (name, secondName) lex. greater than currentStudent's surname (name, sn)
-			 * write student on a previous line before currentStudent
-			 */
-			if (student.compareTo(currentStudent) < 0) {
-				rewrite(file, symbols + 1, student.toString());
-				read.close();
-
-				return;
-			}
-			//counts all passed symbols
-			symbols += tmp.length();
+			System.out.print(tmp);
+			if (!write)
+				if (object.compareTo(tmp) < 0)
+				{
+					write = true;
+					appendToSB(sb, object);
+				}
+			appendToSB(sb, tmp);
 		}
-		//if this is a first student
-		rewrite(file, (int)file.length(), student.toString());
+		//if this is a first object
+		if (!write)
+			appendToSB(sb, object);
+		rewrite(file, sb.toString());
 
 		read.close();
+	}
+
+	private static void rewrite(File file, String sb) throws IOException {
+
+		//System.out.print(sb);
+		PrintWriter out = new PrintWriter(file);
+		out.print(sb);
+		out.close();
+	}
+
+	private static void appendToSB(StringBuilder sb, String add) {
+		sb.append(add).append(System.lineSeparator());
 	}
 }
