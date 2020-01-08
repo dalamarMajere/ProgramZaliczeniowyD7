@@ -34,7 +34,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <TextArea fx:id="studentTextArea" prefHeight="10.0" prefWidth="978.0" />
+                  <TextArea fx:id="studentTextArea" />
                   <Label text="Nowy Student">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -65,7 +65,7 @@
             </VBox>
          </content>
       </TitledPane>
-      <TitledPane text="Pracownicy ( Teacher )">
+      <TitledPane expanded="false" text="Pracownicy ( Teacher )">
          <content>
             <VBox>
                <children>
@@ -87,7 +87,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <TextArea fx:id="employeeTextArea" prefHeight="0.0" prefWidth="978.0" />
+                  <TextArea fx:id="employeeTextArea" />
                   <HBox />
                   <Label text="Nowy Pracownik">
                      <padding>
@@ -120,7 +120,7 @@
             </VBox>
          </content>
       </TitledPane>
-      <TitledPane animated="false" text="Przedmioty ( Subject )">
+      <TitledPane expanded="false" text="Przedmioty ( Subject )">
          <content>
             <VBox>
                <children>
@@ -146,7 +146,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <TextArea fx:id="subjectTextArea" prefHeight="0.0" prefWidth="978.0" />
+                  <TextArea fx:id="subjectTextArea" />
                   <Label text="Nowy Przedmiot">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -167,7 +167,7 @@
             </VBox>
          </content>
       </TitledPane>
-      <TitledPane animated="false" text="Kierunki ( Course )">
+      <TitledPane expanded="false" text="Kierunki ( Course )">
          <content>
             <VBox>
                <children>
@@ -186,7 +186,7 @@
                         <Button mnemonicParsing="false" onAction="#courseSearchButtonAction" text="Szukaj" />
                      </children>
                   </HBox>
-                  <TextArea fx:id="courseTextArea" prefHeight="0.0" prefWidth="978.0">
+                  <TextArea fx:id="courseTextArea">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -215,7 +215,7 @@
             </VBox>
          </content>
       </TitledPane>
-      <TitledPane text="Wydziały ( Faculty )">
+      <TitledPane expanded="false" text="Wydziały ( Faculty )">
          <content>
             <VBox>
                <children>
@@ -239,7 +239,7 @@
                         <Insets top="10.0" />
                      </padding>
                   </HBox>
-                  <TextArea fx:id="facultyTextArea" prefHeight="0.0" prefWidth="978.0" />
+                  <TextArea fx:id="facultyTextArea" />
                   <Label text="Nowy Wydział">
                      <opaqueInsets>
                         <Insets />
