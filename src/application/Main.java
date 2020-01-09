@@ -120,8 +120,12 @@ public class Main extends Application {
 	 private static ArrayList<String> getAll(String path) throws IOException {
 
 		 File f = new File(path);
-		 String[] s = dataAnalyzer.readFile(f).split("\r\n");
-		 return new ArrayList<String>(Arrays.asList(s));
+		 String[] dataWithGarbage = dataAnalyzer.readFile(f).split("\r\n");
+
+		 ArrayList<String> data = new ArrayList<>();
+		 for (String i: dataWithGarbage)
+			 data.add(i.split(";")[1]);
+		 return data;
 	 }
 
 	 public static ArrayList<String> getAllFaculties() throws IOException {

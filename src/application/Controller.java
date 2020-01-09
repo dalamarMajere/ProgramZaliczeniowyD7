@@ -1,6 +1,7 @@
 package application;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 
@@ -22,6 +23,15 @@ public class Controller implements Initializable {
 
      public void initialize(URL location, ResourceBundle resources) {
         System.out.println("View is now loaded!");
+        try {
+			courseFacultyChoiceBox.setItems(FXCollections.
+					observableList(Main.getAllFaculties()));
+			for (Object i:courseFacultyChoiceBox.getItems()) {
+				System.out.println((String)i);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
 
@@ -49,8 +59,8 @@ public class Controller implements Initializable {
 		        String name = studentNameLabel.getText();
 		        String secondName = studentSecondNameLabel.getText();
 		        String birthDate = studentBirthDateLabel.getText();
-		        String faculty = studentFacultyChoiceBox.getValue();
-		        String course = studentCourseChoiceBox.getValue();
+		        String faculty = "Fac";//studentFacultyChoiceBox.getValue();
+		        String course = "Cour";//studentCourseChoiceBox.getValue();
 		        String semester = studentSemesterLabel.getText();
 		        Main.loadStudent(id, surname, name, secondName, birthDate,
 		        		faculty, course, semester);
@@ -115,7 +125,7 @@ public class Controller implements Initializable {
 
 		    public void courseAddButtonAction() {
 
-		    	String faculty = courseFacultyChoiceBox.getValue();
+		    	String faculty = (String)courseFacultyChoiceBox.getSelectionModel().getSelectedItem();
 		    	String id = courseIdLabel.getText();
 		    	String name = courseNameLabel.getText();
 		    	Main.loadCourse(id, name, faculty);
@@ -140,8 +150,6 @@ public class Controller implements Initializable {
 		    	String id = facultyIdLabel.getText();
 		        String name = facultyNameLabel.getText();
 		        Main.loadFaculty(id, name);
-		        courseFacultyChoiceBox.setItems(FXCollections.
-    					observableArrayList(Main.getAllFaculties()));
 		    }
 
 

@@ -27,7 +27,7 @@ public class Student extends Person {
 	 */
 	public Student(String... inf) {
 
-		this(Integer.parseInt(inf[0]), inf[1], inf[2], inf[3], inf[4], inf[5], inf[6], Integer.parseInt(inf[6]));
+		this(Integer.parseInt(inf[0]), inf[1], inf[2], inf[3], inf[4], inf[5], inf[6], Integer.parseInt(inf[7]));
 	}
 
 	@Override
