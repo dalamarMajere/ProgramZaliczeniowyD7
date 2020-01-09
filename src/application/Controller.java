@@ -23,12 +23,9 @@ public class Controller implements Initializable {
 
      public void initialize(URL location, ResourceBundle resources) {
         System.out.println("View is now loaded!");
-        try {
-			courseFacultyChoiceBox.setItems(FXCollections.
+		try {
+			studentFacultyChoiceBox.setItems(FXCollections.
 					observableList(Main.getAllFaculties()));
-			for (Object i:courseFacultyChoiceBox.getItems()) {
-				System.out.println((String)i);
-			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
