@@ -46,6 +46,17 @@ public class Controller implements Initializable {
 	                }
 	            }
 	        });
+
+		subjectFacultyChoiceBox.getSelectionModel().selectedItemProperty().
+			addListener(new ChangeListener<String>() {
+				public void changed(ObservableValue<? extends String> observable,
+	                    String oldValue, String newValue) {
+	                if (newValue != null) {
+	                    subjectCourseChoiceBox.setItems(
+	                    		getCourse(subjectFacultyChoiceBox.getValue()));
+	                }
+	            }
+        });
 	}
 
 
@@ -147,6 +158,7 @@ public class Controller implements Initializable {
 	public TextArea subjectTextArea;
 	public TextField subjectNameLabel;
 	public ChoiceBox<String> subjectFacultyChoiceBox;
+	public ChoiceBox<String> subjectCourseChoiceBox;
 
 
     public void subjectAddButtonAction() {
