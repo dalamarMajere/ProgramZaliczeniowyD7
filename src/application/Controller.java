@@ -162,7 +162,10 @@ public class Controller implements Initializable {
 
 
     public void subjectAddButtonAction() {
-
+    	String name = subjectNameLabel.getText();
+    	String faculty = subjectFacultyChoiceBox.getValue();
+    	String course = subjectCourseChoiceBox.getValue();
+    	Main.loadSubject(name, faculty, course);
     }
 
 

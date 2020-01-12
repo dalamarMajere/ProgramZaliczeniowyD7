@@ -6,23 +6,20 @@ public class Subject {
 
     private ArrayList<Integer> grades;
     private String name;
-    private String code;
+    private String faculty;
+    private String course;
     private boolean credit;
 
-    //constructors
-    public Subject(String name) {
-        this(name, "0");
+    public Subject(String... inf) {
+    	this(inf[0], inf[1], inf[2]);
     }
 
-    public Subject() {
-        this("Subject", "0");
-    }
-
-    public Subject(String name, String code) {
+    public Subject(String name, String faculty, String course) {
         this.name = name;
         this.grades = new ArrayList<>();
         this.credit = false;
-        this.code = code;
+        this.faculty = faculty;
+        this.course = course;
     }
 
     public void addGrade(int grade) {
@@ -56,15 +53,15 @@ public class Subject {
         this.name = name;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getName() {
         return name;
     }
 
-    public String code() {
-        return code;
+    public String getFaculty() {
+    	return faculty;
+    }
+
+    public String getCourse() {
+    	return course;
     }
 }

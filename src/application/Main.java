@@ -146,7 +146,10 @@ public class Main extends Application {
 		 return getAll(FolderFaculty + "/" + faculty + "/Course.txt");
 	 }
 
-	 public static void loadSubject() {
+	 private static final String DataSubject = "data/Subject.txt";
+
+	 public static void loadSubject(String... information) {
+		 Subject subject = new Subject(information);
 
 	 }
 
