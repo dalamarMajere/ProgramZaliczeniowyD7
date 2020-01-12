@@ -39,8 +39,16 @@ public class Student extends Person {
 		return this.faculty;
 	}
 
-	public void setFaculty(String unit) {
-		this.faculty = unit;
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+
+	public String getCourse() {
+		return this.course;
+	}
+
+	public void setCourse(String course) {
+		this.course = course;
 	}
 
 	public int getSemester() {

@@ -49,6 +49,10 @@ public class Main extends Application {
 
 		 Student student = new Student(information);
 		 loadObject(DataStudent, student.toString());
+		 String facultyFolder = FolderFaculty + "/" + student.getFaculty();
+		 loadObject(facultyFolder + "/" + "Student.txt", student.toString());
+		 String courseFolder = facultyFolder + "/Courses/" + student.getCourse();
+		 loadObject(courseFolder + "/" + "Student.txt", student.toString());
 	 }
 
 	 public static String searchStudent(String criterium) throws IOException{
