@@ -104,8 +104,10 @@ public class Main extends Application {
 
 		 try {
 	            File f = new File(path);
-	            if (f.createNewFile() || f.isFile())
+	            if (f.createNewFile() || f.isFile()) {
 	            	dataAnalyzer.loadUnit(f, course.toString().split(";"));
+	            	createCourseFolder(faculty);
+	            }
 	            else System.err.println("Error with creating file");
 	     }
 	     catch (Exception e) {
@@ -121,26 +123,45 @@ public class Main extends Application {
 
 		 File f = new File(path);
 		 String[] dataWithGarbage = dataAnalyzer.readFile(f).split("\r\n");
+		 if (f.exists() && dataWithGarbage.length > 0
+				 && !dataWithGarbage[0].equals("")) {
 
-		 ArrayList<String> data = new ArrayList<>();
-		 for (String i: dataWithGarbage)
-			 data.add(i.split(";")[1]);
-		 return data;
+			ArrayList<String> data = new ArrayList<>();
+			for (String i: dataWithGarbage)
+				data.add(i.split(";")[1]);
+			return data;
+		 }
+		 return new ArrayList<>();
 	 }
 
 	 public static ArrayList<String> getAllFaculties() throws IOException {
 		 return getAll(DataFaculty);
 	 }
 
+	 public static ArrayList<String> getAllCourses(String faculty) throws IOException {
+		 return getAll(FolderFaculty + "/" + faculty + "/Course.txt");
+	 }
+
 	 public static void loadSubject() {
 
 	 }
 
+	 private static void createCourseFolder(String faculty) throws FileNotFoundException {
+
+		 String path = FolderFaculty + "/" + faculty;
+		 createFolders(path + "/Courses", path + "/Course.txt");
+	 }
+
 	 private static void createFacultyFolder() throws FileNotFoundException {
+		 createFolders(FolderFaculty, DataFaculty);
+	 }
 
-		 createFolder(FolderFaculty);
+	 private static void createFolders(String folderPath,
+			 			String txtPath) throws FileNotFoundException {
 
-		 File f = new File(DataFaculty);
+		 createFolder(folderPath);
+
+		 File f = new File(txtPath);
 		 Scanner in = new Scanner(f);
 
 		 String tmp;
@@ -148,7 +169,7 @@ public class Main extends Application {
 		 while (in.hasNextLine()) {
 
 			 tmp = in.nextLine().split(";")[1];
-			 createFolder(FolderFaculty + "\\" + tmp);
+			 createFolder(folderPath + "/" + tmp);
 		 }
 		 in.close();
 	 }
