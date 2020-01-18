@@ -157,8 +157,15 @@ public class Controller implements Initializable {
 	* SEARCH TEACHER
 	*/
 
-    public void employeeSearchButtonAction() {
-
+    public void employeeSearchButtonAction() throws IOException {
+    	System.out.println("Searching students with criterium: "+
+				studentCryteriumLabel.getText());
+    	ArrayList<String> filteredTeachers = Main.searchTeacher(employeeCryteriumLabel.getText());
+    	String filter="";
+    	for(int i = 0 ; i < filteredTeachers.size() ; i++ ){
+    		filter = filter.concat(filteredTeachers.get(i))+"\n";
+    	}
+    	studentTextArea.setText(filter);
     }
 
 	/*

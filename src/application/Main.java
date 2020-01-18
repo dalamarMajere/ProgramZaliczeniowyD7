@@ -53,10 +53,13 @@ public class Main extends Application {
 
 	 private static final String DataTeacher = "data/Teacher.txt";
 
-	 public static void loadTeacher(String... information) {}
+	 public static void loadTeacher(String... information) {
 
-	 public static String searchTeacher(String criterium){
-		 return null;
+	 }
+
+	 public static ArrayList<String> searchTeacher(String criterium) throws IOException{
+		ArrayList filter = dataAnalyzer.filterFile(new File(DataTeacher),criterium);
+		return filter;
 	 }
 
 	 /*
@@ -165,9 +168,11 @@ public class Main extends Application {
 	 public static ArrayList<String> searchSubject(String criterium) throws IOException{
 		 ArrayList<String> filtered = new ArrayList<String>();
 		 ArrayList<String> allFaculties = getAllFaculties();
+
 		 for(int i=0;i<allFaculties.size();i++){
 			 String currentFacullty = allFaculties.get(i);
 			 ArrayList<String> allCourses = getAllCourses(allFaculties.get(i));
+
 			 for(int j=0;j<allCourses.size();j++){
 				 String currentCourse =allCourses.get(j);
 				 File subjects= new File(FolderFaculty + "/" + currentFacullty + "/"+FolderCourse+"/" + currentCourse + "/Subjects.txt");

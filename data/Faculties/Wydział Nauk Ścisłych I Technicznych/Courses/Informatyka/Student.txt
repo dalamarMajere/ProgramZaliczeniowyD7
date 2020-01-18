@@ -1,0 +1,4 @@
+333382;Kamil;Haraf;Wojciech;23.11.2019;Wydzia³ Nauk Œcis³ych I Technicznych;Informatyka;1;
+333382;Kamil;Haraf;Wojciech;23.11.2019;Wydzia³ Nauk Œcis³ych I Technicznych;Informatyka;1;
+333382;Kamil;Haraf;Wojciech;23.11.2019;Wydzia³ Nauk Œcis³ych I Technicznych;Informatyka;1;
+333382;Kamil;Haraf;Wojciech;23.11.2019;Wydzia³ Nauk Œcis³ych I Technicznych;Informatyka;12;
