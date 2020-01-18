@@ -40,21 +40,24 @@ public class dataAnalyzer {
 		read.close();
 	}
 
-	public static String filterFile(File file, String criterium) throws IOException{
-
-		StringBuilder sb = new StringBuilder();
+	public static ArrayList<String> filterFile(File file, String criterium) throws IOException{
 		String textOutput = readFile(file);
-		String objects[] = textOutput.split( "\r\n" );
+		ArrayList<String> filtered=filterString(textOutput,criterium);
+		return filtered;
+	}
+
+	public static ArrayList<String> filterString(String str, String criterium) throws IOException{
+		ArrayList<String> filtered = new ArrayList<String>();
+		String objects[] = str.split( "\r\n" );
 
 		for (int i = 0; i < objects.length; i++) {
-			if (objects[i].contains(criterium)) {
-				appendToSB(sb, objects[i]);
+			if (objects[i].toLowerCase().contains(criterium.toLowerCase())) {
+				filtered.add(objects[i]);
 			}
 		}
 
-		return sb.toString();
+		return filtered;
 	}
-
 	public static void loadObject(File file, String object) throws IOException {
 
 		Scanner read = new Scanner(file);

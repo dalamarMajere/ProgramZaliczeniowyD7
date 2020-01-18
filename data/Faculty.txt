@@ -1,2 +1,4 @@
-545;INF;
-545;INFF;
+2;Wydzia³ Bankowoœci;
+1;Wydzia³ Nauk Œcis³ych I Technicznych;
+3;Wydzia³ Wiedzy O Historii;
+

@@ -78,11 +78,9 @@ public class Controller implements Initializable {
 		return FXCollections.observableArrayList();
 	 }
 
-	public VBox vbox;
-
-	    /*
-	     * STUDENT
-	     */
+	/*
+	* STUDENT
+	*/
 
 	public TextField studentCryteriumLabel;
 	public TextArea studentTextArea;
@@ -96,8 +94,8 @@ public class Controller implements Initializable {
 	public TextField studentSemesterLabel;
 
 	/*
-	 * ADD STUDENT
-	 */
+	* ADD STUDENT
+	*/
 
 	public void studentAddButtonAction() {
 		String id = studentIdLabel.getText();
@@ -108,30 +106,36 @@ public class Controller implements Initializable {
 		String faculty = studentFacultyChoiceBox.getValue();
 		String course = studentCourseChoiceBox.getValue();
 		String semester = studentSemesterLabel.getText();
+
 		Main.loadStudent(id, surname, name, secondName, birthDate,
 					faculty, course, semester);
 	}
 
-	public void studentFacultyChoisen() {
+	public void studentFacultyChosen() {
 		System.out.println("Here");
 		studentCourseChoiceBox.setItems(getCourse(
 				 			studentFacultyChoiceBox.getValue()));
 	 }
 
 	/*
-	 * STUDENT SEARCH
-	 */
+	* STUDENT SEARCH
+	*/
 
 	public void studentSearchButtonAction() throws IOException {
 		System.out.println("Searching students with criterium: "+
 									studentCryteriumLabel.getText());
-		String filteredStudents = Main.searchStudent(studentCryteriumLabel.getText());
-		studentTextArea.setText(filteredStudents);
+
+		ArrayList<String> filteredStudents = Main.searchStudent(studentCryteriumLabel.getText());
+		String filter="";
+		for(int i = 0 ; i < filteredStudents.size() ; i++ ){
+    		filter = filter.concat(filteredStudents.get(i))+"\n";
+    	}
+		studentTextArea.setText(filter);
 	}
 
-	    /*
-	     * EMPLOYEE
-	     */
+	/*
+	 * TEACHER
+	*/
 
 	public TextField employeeCryteriumLabel;
 	public TextArea employeeTextArea;
@@ -141,18 +145,25 @@ public class Controller implements Initializable {
 	public TextField employeeNameLabel;
 	public TextField employeeBirthDate;
 
+	/*
+	* ADD TEACHER
+	*/
+
     public void employeeAddButtonAction() {
 
     }
 
+	/*
+	* SEARCH TEACHER
+	*/
 
     public void employeeSearchButtonAction() {
 
     }
 
-	    /*
-	     * SUBJECT
-	     */
+	/*
+	 * SUBJECT
+	*/
 
 	public TextField subjectCryteriumLabel;
 	public TextArea subjectTextArea;
@@ -160,6 +171,9 @@ public class Controller implements Initializable {
 	public ChoiceBox<String> subjectFacultyChoiceBox;
 	public ChoiceBox<String> subjectCourseChoiceBox;
 
+	/*
+	 * ADD SUBJECT
+	*/
 
     public void subjectAddButtonAction() {
     	String name = subjectNameLabel.getText();
@@ -168,14 +182,17 @@ public class Controller implements Initializable {
     	Main.loadSubject(name, faculty, course);
     }
 
+    /*
+	 * SEARCH SUBJECT
+	*/
 
     public void subjectSearchButtonAction() {
 
     }
 
-	    /*
-	     * COURSE
-	     */
+	/*
+	* COURSE
+	*/
 
     public TextField courseCriteriumLabel;
     public TextArea courseTextArea;
@@ -183,27 +200,50 @@ public class Controller implements Initializable {
     public TextField courseNameLabel;
     public ChoiceBox<String> courseFacultyChoiceBox;
 
+    /*
+	 * ADD COURSE
+	*/
+
     public void courseAddButtonAction() {
 
     	String faculty = courseFacultyChoiceBox.getValue();
     	String id = courseIdLabel.getText();
     	String name = courseNameLabel.getText();
+    	if(!faculty.isEmpty() && !id.isEmpty() && !name.isEmpty())
     	Main.loadCourse(id, name, faculty);
+
+    	courseFacultyChoiceBox.setValue(null);
+    	courseIdLabel.setText("");
+    	courseNameLabel.setText("");
     }
 
+    /*
+	 * SEARCH COURSE
+	*/
 
-    public void courseSearchButtonAction() {
-
+    public void courseSearchButtonAction() throws IOException {
+    	ArrayList<String> filteredCourses = Main.searchCourse(courseCriteriumLabel.getText());
+    	String filter="";
+    	System.out.println("Searching courses with criterium: "+
+    			courseCriteriumLabel.getText());
+    	for(int i = 0 ; i < filteredCourses.size() ; i++ ){
+    		filter = filter.concat(filteredCourses.get(i))+"\n";
+    	}
+    	courseTextArea.setText(filter);
     }
 
-	    /*
-	     * FACULTY
-	     */
+	/*
+	* FACULTY
+	*/
 
     public TextField facultyCriteriumLabel;
     public TextArea facultyTextArea;
     public TextField facultyIdLabel;
     public TextField facultyNameLabel;
+
+    /*
+	* ADD FACULTY
+	*/
 
     public void facultyAddButtonAction() throws IOException {
 
@@ -211,12 +251,23 @@ public class Controller implements Initializable {
         String name = facultyNameLabel.getText();
         Main.loadFaculty(id, name);
 
+        facultyNameLabel.setText("");
+        facultyIdLabel.setText("");
+
         loadChoiceBox();
     }
 
+    /*
+	* SEARCH FACULTY
+	*/
 
-    public void facultySearchButtonAction() {
-
+    public void facultySearchButtonAction() throws IOException {
+    	ArrayList<String> filteredFaculties = Main.searchFaculty(facultyCriteriumLabel.getText());
+    	String filter="";
+		for(int i = 0 ; i < filteredFaculties.size() ; i++ ){
+    		filter = filter.concat(filteredFaculties.get(i))+"\n";
+    	}
+    	facultyTextArea.setText(filter);
     }
 
 }

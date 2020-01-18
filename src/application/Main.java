@@ -27,23 +27,10 @@ public class Main extends Application {
 	 }
 
 	 /*
-	  * PERSON, STUDENT, TEACHER
+	  * STUDENT
 	  */
+
 	 private static final String DataStudent = "data/Student.txt";
-	 private static final String DataTeacher = "data/Teacher.txt";
-
-	 public static void loadObject(String path, String information) {
-
-		 try {
-	            File f = new File(path);
-	            if (f.createNewFile() || f.isFile())
-	            	dataAnalyzer.loadObject(f, information);
-	            else System.err.println("Error with creating file");
-	     }
-	     catch (Exception e) {
-	            System.err.println(e);
-	     }
-	 }
 
 	 public static void loadStudent(String... information) {
 
@@ -55,24 +42,25 @@ public class Main extends Application {
 		 loadObject(courseFolder + "/" + "Student.txt", student.toString());
 	 }
 
-	 public static String searchStudent(String criterium) throws IOException{
-		String filter = dataAnalyzer.filterFile(new File(DataStudent),criterium);
-
+	 public static ArrayList<String> searchStudent(String criterium) throws IOException{
+		ArrayList filter = dataAnalyzer.filterFile(new File(DataStudent),criterium);
 		return filter;
 	 }
 
-	 public static void loadTeacher(String... information) {
+	 /*
+	  * TEACHER
+	  */
 
-		 //Teacher teacher = new Teacher(information);
-		 //loadObject(DataTeacher, teacher.toString())
-	 }
+	 private static final String DataTeacher = "data/Teacher.txt";
 
-	 public static void searchTeacher(String criterium){
+	 public static void loadTeacher(String... information) {}
 
+	 public static String searchTeacher(String criterium){
+		 return null;
 	 }
 
 	 /*
-	  * FACULTY, COURSE, SUBJECT
+	  * FACULTY
 	  */
 
 	 private static final String FolderFaculty = "data/Faculties";
@@ -95,10 +83,22 @@ public class Main extends Application {
   		}
 	 }
 
-	 public static void searchFaculty(String criterium){
-
+	 public static ArrayList<String> getAllFaculties() throws IOException {
+		 return getAll(DataFaculty);
 	 }
 
+	 private static void createFacultyFolder() throws FileNotFoundException {
+		 createFolders(FolderFaculty, DataFaculty);
+	 }
+
+	 public static ArrayList<String> searchFaculty(String criterium) throws IOException{
+		ArrayList<String> filter = dataAnalyzer.filterFile(new File(DataFaculty),criterium);
+		return filter;
+	 }
+
+	/*
+	 * COURSE
+	*/
 	 public static void loadCourse(String... inf) {
 
 		 CourseOfStudy course = new CourseOfStudy(inf[0], inf[1]);
@@ -119,9 +119,59 @@ public class Main extends Application {
 	     }
 	 }
 
-	 public static void searchCourse(String criterium){
+	 public static ArrayList<String> getAllFacultyCourses(String faculty) throws IOException {
+		 return getAll(FolderFaculty + "/" + faculty + "/Course.txt");
+	 }
+
+	 public static ArrayList<String> getAllCourses(String faculty) throws IOException {
+
+		 ArrayList<String> faculties = getAllFaculties();
+		 ArrayList<String> allcourses = new ArrayList<String>();
+
+		 for(int i = 0;i< faculties.size();i++){
+			 ArrayList<String> facultyCourses = getAllFacultyCourses(faculties.get(i));
+			 allcourses.addAll(facultyCourses);
+		 }
+
+		 return faculties;
+	 }
+
+	 private static void createCourseFolder(String faculty) throws FileNotFoundException {
+		 String path = FolderFaculty + "/" + faculty;
+		 createFolders(path + "/Courses", path + "/Course.txt");
+	 }
+
+	 public static ArrayList<String> searchCourse(String criterium) throws IOException{
+		 ArrayList<String> allFaculties = getAllFaculties();
+		 ArrayList<String> filtered= new ArrayList<String>();
+		 for(int i=0;i<allFaculties.size();i++){
+			 String faculty = allFaculties.get(i);
+			 ArrayList<String> courses=dataAnalyzer.filterFile(new File(FolderFaculty+"/"+allFaculties.get(i)+"/Course.txt"),criterium);
+
+			 for(int j = 0; j<courses.size();j++ ){
+				 if(!courses.get(j).isEmpty()){
+					 courses.set(j,courses.get(j).concat(faculty));
+				 }
+				 filtered.add(courses.get(j));
+			 }
+		 }
+		return filtered;
+	 }
+
+	/*
+	* SUBJECT
+	*/
+
+	 private static final String DataSubject = "data/Subject.txt";
+
+	 public static void loadSubject(String... information) {
+		 Subject subject = new Subject(information);
 
 	 }
+
+	 /*
+	  * OTHER METHODS
+	  */
 
 	 private static ArrayList<String> getAll(String path) throws IOException {
 
@@ -136,31 +186,6 @@ public class Main extends Application {
 			return data;
 		 }
 		 return new ArrayList<>();
-	 }
-
-	 public static ArrayList<String> getAllFaculties() throws IOException {
-		 return getAll(DataFaculty);
-	 }
-
-	 public static ArrayList<String> getAllCourses(String faculty) throws IOException {
-		 return getAll(FolderFaculty + "/" + faculty + "/Course.txt");
-	 }
-
-	 private static final String DataSubject = "data/Subject.txt";
-
-	 public static void loadSubject(String... information) {
-		 Subject subject = new Subject(information);
-
-	 }
-
-	 private static void createCourseFolder(String faculty) throws FileNotFoundException {
-
-		 String path = FolderFaculty + "/" + faculty;
-		 createFolders(path + "/Courses", path + "/Course.txt");
-	 }
-
-	 private static void createFacultyFolder() throws FileNotFoundException {
-		 createFolders(FolderFaculty, DataFaculty);
 	 }
 
 	 private static void createFolders(String folderPath,
@@ -185,5 +210,17 @@ public class Main extends Application {
 
 		 File f = new File(path);
 		 f.mkdir();
+	 }
+
+	 public static void loadObject(String path, String information) {
+		 try {
+	            File f = new File(path);
+	            if (f.createNewFile() || f.isFile())
+	            	dataAnalyzer.loadObject(f, information);
+	            else System.err.println("Error with creating file");
+	     }
+	     catch (Exception e) {
+	            System.err.println(e);
+	     }
 	 }
 }
