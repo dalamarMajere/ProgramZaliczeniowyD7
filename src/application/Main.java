@@ -99,6 +99,7 @@ public class Main extends Application {
 	/*
 	 * COURSE
 	*/
+	 private static final String FolderCourse ="Courses";
 	 public static void loadCourse(String... inf) {
 
 		 CourseOfStudy course = new CourseOfStudy(inf[0], inf[1]);
@@ -119,21 +120,8 @@ public class Main extends Application {
 	     }
 	 }
 
-	 public static ArrayList<String> getAllFacultyCourses(String faculty) throws IOException {
-		 return getAll(FolderFaculty + "/" + faculty + "/Course.txt");
-	 }
-
 	 public static ArrayList<String> getAllCourses(String faculty) throws IOException {
-
-		 ArrayList<String> faculties = getAllFaculties();
-		 ArrayList<String> allcourses = new ArrayList<String>();
-
-		 for(int i = 0;i< faculties.size();i++){
-			 ArrayList<String> facultyCourses = getAllFacultyCourses(faculties.get(i));
-			 allcourses.addAll(facultyCourses);
-		 }
-
-		 return faculties;
+		 return getAll(FolderFaculty + "/" + faculty + "/Course.txt");
 	 }
 
 	 private static void createCourseFolder(String faculty) throws FileNotFoundException {
@@ -167,6 +155,28 @@ public class Main extends Application {
 	 public static void loadSubject(String... information) {
 		 Subject subject = new Subject(information);
 
+	 }
+
+	 public static ArrayList<String> getAllSubjects(String faculty, String course) throws IOException{
+
+		 return getAll(FolderFaculty + "/" + faculty + "/"+FolderCourse+"/" + course + "/Subjects.txt");
+	 }
+
+	 public static ArrayList<String> searchSubject(String criterium) throws IOException{
+		 ArrayList<String> filtered = new ArrayList<String>();
+		 ArrayList<String> allFaculties = getAllFaculties();
+		 for(int i=0;i<allFaculties.size();i++){
+			 String currentFacullty = allFaculties.get(i);
+			 ArrayList<String> allCourses = getAllCourses(allFaculties.get(i));
+			 for(int j=0;j<allCourses.size();j++){
+				 String currentCourse =allCourses.get(j);
+				 File subjects= new File(FolderFaculty + "/" + currentFacullty + "/"+FolderCourse+"/" + currentCourse + "/Subjects.txt");
+				 ArrayList <String> allSubjects = getAllSubjects(allFaculties.get(i),allCourses.get(j));
+				 filtered.addAll(dataAnalyzer.filterFile(subjects, criterium));
+
+			 }
+		 }
+		 return filtered;
 	 }
 
 	 /*

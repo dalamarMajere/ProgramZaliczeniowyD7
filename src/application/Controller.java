@@ -186,8 +186,14 @@ public class Controller implements Initializable {
 	 * SEARCH SUBJECT
 	*/
 
-    public void subjectSearchButtonAction() {
-
+    public void subjectSearchButtonAction() throws IOException {
+    	System.out.println("Searching for subjects with criterium: ");
+    	ArrayList<String> filteredCourses = Main.searchSubject(subjectCryteriumLabel.getText());
+    	String filter="";
+    	for(int i = 0 ; i < filteredCourses.size() ; i++ ){
+    		filter = filter.concat(filteredCourses.get(i))+"\n";
+    	}
+    	courseTextArea.setText(filter);
     }
 
 	/*
