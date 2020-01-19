@@ -6,15 +6,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+
 
 public class Controller implements Initializable {
 
@@ -96,8 +94,7 @@ public class Controller implements Initializable {
 	/*
 	* ADD STUDENT
 	*/
-
-	public void studentAddButtonAction() {
+	public void studentAddButtonAction() throws IOException {
 		String id = studentIdLabel.getText();
 		String surname = studentSurnameLabel.getText();
 		String name = studentNameLabel.getText();
@@ -107,8 +104,10 @@ public class Controller implements Initializable {
 		String course = studentCourseChoiceBox.getValue();
 		String semester = studentSemesterLabel.getText();
 
+		Main.showAlertBox("Well Done","Student Added Succesfully");
 		Main.loadStudent(id, surname, name, secondName, birthDate,
 					faculty, course, semester);
+
 	}
 
 	public void studentFacultyChosen() {

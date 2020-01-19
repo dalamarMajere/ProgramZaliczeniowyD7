@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="1000.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="1000.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <TitledPane alignment="TOP_LEFT" text="Studenci ( Student )">
          <content>
@@ -48,7 +48,7 @@
                               <TextField fx:id="studentSurnameLabel" promptText="nazwisko" />
                               <TextField fx:id="studentNameLabel" promptText="imie" />
                               <TextField fx:id="studentSecondNameLabel" promptText="drugie imię" />
-                              <TextField fx:id="studentBirthDateLabel" promptText="data urodzenia" />
+                              <TextField fx:id="studentBirthDateLabel" promptText="dd/mm/yyyy" />
                               <ChoiceBox fx:id="studentFacultyChoiceBox" prefWidth="150.0" />
                               <ChoiceBox fx:id="studentCourseChoiceBox" prefWidth="150.0" />
                               <TextField fx:id="studentSemesterLabel" prefHeight="25.0" prefWidth="163.0" promptText="semestr">

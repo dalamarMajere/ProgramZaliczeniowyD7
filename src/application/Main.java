@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +13,6 @@ import javafx.scene.Scene;
 
 
 public class Main extends Application {
-
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -29,6 +27,10 @@ public class Main extends Application {
 	 /*
 	  * STUDENT
 	  */
+	 public static void showAlertBox(String title, String message) throws IOException{
+		 AlertBox alertBox= new AlertBox();
+		 alertBox.display(title, message);
+	 }
 
 	 private static final String DataStudent = "data/Student.txt";
 
@@ -176,9 +178,7 @@ public class Main extends Application {
 			 for(int j=0;j<allCourses.size();j++){
 				 String currentCourse =allCourses.get(j);
 				 File subjects= new File(FolderFaculty + "/" + currentFacullty + "/"+FolderCourse+"/" + currentCourse + "/Subjects.txt");
-				 ArrayList <String> allSubjects = getAllSubjects(allFaculties.get(i),allCourses.get(j));
 				 filtered.addAll(dataAnalyzer.filterFile(subjects, criterium));
-
 			 }
 		 }
 		 return filtered;
