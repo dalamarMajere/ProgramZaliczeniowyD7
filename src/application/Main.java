@@ -35,7 +35,6 @@ public class Main extends Application {
 	 private static final String DataStudent = "data/Student.txt";
 
 	 public static void loadStudent(String... information) {
-
 		 Student student = new Student(information);
 		 loadObject(DataStudent, student.toString());
 		 String facultyFolder = FolderFaculty + "/" + student.getFaculty();
@@ -106,7 +105,6 @@ public class Main extends Application {
 	*/
 	 private static final String FolderCourse ="Courses";
 	 public static void loadCourse(String... inf) {
-
 		 CourseOfStudy course = new CourseOfStudy(inf[0], inf[1]);
 		 String faculty = inf[2];
 

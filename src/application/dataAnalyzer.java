@@ -6,15 +6,14 @@ import java.util.*;
 public class dataAnalyzer {
 
 	 public static String readFile(File file) throws IOException{
-
 		RandomAccessFile raf = new RandomAccessFile(file,"rw");
 		byte output[] = new byte[(int) file.length()];
 		raf.read(output);
+		raf.close();
 		return new String(output);
 	 }
 
 	public static void loadUnit(File file, String[] toWrite) throws IOException {
-
 		Scanner read = new Scanner(file);
 
 		StringBuilder sb = new StringBuilder();
@@ -59,7 +58,6 @@ public class dataAnalyzer {
 		return filtered;
 	}
 	public static void loadObject(File file, String object) throws IOException {
-
 		Scanner read = new Scanner(file);
 
 		StringBuilder sb = new StringBuilder();
@@ -86,7 +84,6 @@ public class dataAnalyzer {
 	}
 
 	private static int myCompareTo(String one, String two) {
-
 		String[] ones = one.split(";");
 		String[] twos = two.split(";");
 
@@ -101,7 +98,6 @@ public class dataAnalyzer {
 	}
 
 	private static void rewrite(File file, String sb) throws IOException {
-
 		//System.out.print(sb);
 		PrintWriter out = new PrintWriter(file);
 		out.print(sb);

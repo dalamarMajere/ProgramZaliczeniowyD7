@@ -59,10 +59,9 @@ public class Controller implements Initializable {
 		String course = studentCourseChoiceBox.getValue();
 		String semester = studentSemesterLabel.getText();
 
-
 		if(checkString(surname,name,secondName)&&checkNumber(semester,id)&&checkDate(birthDate)&&checkChoiceBox(studentFacultyChoiceBox,studentCourseChoiceBox)){
-			String information[]=formatText(surname,name,secondName);
-			Main.loadStudent(id, surname, name, secondName, birthDate,
+			String formated[]=formatText(surname,name,secondName);
+			Main.loadStudent(id, formated[0], formated[1], formated[2], birthDate,
 						faculty, course, semester);
 
 			resetValue(studentBirthDateLabel, studentIdLabel, studentSurnameLabel,
@@ -70,7 +69,6 @@ public class Controller implements Initializable {
 			studentFacultyChoiceBox.setValue(null);
 			studentCourseChoiceBox.setValue(null);
 		}
-
 	}
 
 	public void studentFacultyChosen() {
@@ -83,8 +81,6 @@ public class Controller implements Initializable {
 	*/
 
 	public void studentSearchButtonAction() throws IOException {
-		System.out.println("Searching students with criterium: "+
-									studentCryteriumLabel.getText());
 		ArrayList<String> filteredStudents = Main.searchStudent(studentCryteriumLabel.getText());
 
 		for(int i = 0 ; i < filteredStudents.size() ; i++ ){
@@ -200,7 +196,6 @@ public class Controller implements Initializable {
 	*/
 
     public void courseAddButtonAction() throws IOException {
-
     	String faculty = courseFacultyChoiceBox.getValue();
     	String id = courseIdLabel.getText();
     	String name = courseNameLabel.getText();
@@ -243,7 +238,6 @@ public class Controller implements Initializable {
 	*/
 
     public void facultyAddButtonAction() throws IOException {
-
     	String id = facultyIdLabel.getText();
         String name = facultyNameLabel.getText();
 
