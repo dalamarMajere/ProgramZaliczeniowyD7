@@ -1,3 +1,6 @@
+1;1;
+142;GA;
+2;GF;
 2;Wydzia³ Bankowoœci;
 1;Wydzia³ Nauk Œcis³ych I Technicznych;
 3;Wydzia³ Wiedzy O Historii;
