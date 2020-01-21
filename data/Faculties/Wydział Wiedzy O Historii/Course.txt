@@ -1,0 +1,2 @@
+1;Archeologia;
+1;Regionalizm;

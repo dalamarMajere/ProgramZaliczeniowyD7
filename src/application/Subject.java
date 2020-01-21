@@ -6,20 +6,21 @@ public class Subject {
 
     private ArrayList<Integer> grades;
     private String name;
-    private String faculty;
-    private String course;
+    private String id;
     private boolean credit;
 
-    public Subject(String... inf) {
-    	this(inf[0], inf[1], inf[2]);
+    public Subject (String... inf) {
+    	this(inf[0], inf[1]);
     }
-
-    public Subject(String name, String faculty, String course) {
-        this.name = name;
-        this.grades = new ArrayList<>();
-        this.credit = false;
-        this.faculty = faculty;
-        this.course = course;
+    
+    public Subject (String id, String name) {
+    	this.name = name;
+    	this.id = id;
+    }
+    
+    @Override
+    public String toString() {
+    	return id + ";" + name + ";";
     }
 
     public void addGrade(int grade) {
@@ -55,13 +56,5 @@ public class Subject {
 
     public String getName() {
         return name;
-    }
-
-    public String getFaculty() {
-    	return faculty;
-    }
-
-    public String getCourse() {
-    	return course;
     }
 }

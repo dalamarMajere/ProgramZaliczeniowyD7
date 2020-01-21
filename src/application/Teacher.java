@@ -4,23 +4,19 @@ import java.util.ArrayList;
 
 public class Teacher extends Person {
 
-	private ArrayList<Subject> subjects;
-
-	public Teacher(int personId, String surname, String name,
-			String secondName, String birthDate) {
-
-		super(personId, surname, name, secondName, birthDate);
+	String title;
+	
+	public Teacher(String... inf) {
+		this(Integer.parseInt(inf[0]), inf[1], inf[2], inf[3], inf[4]);
 	}
+	
+	public Teacher(int personId, String title, String surname, String name, String birthDate) {
 
-	public ArrayList<Subject> getSubjects() {
-		return this.subjects;
+		super(personId, surname, name, birthDate);
+		this.title = title;
 	}
-
-	public void setSubjects(ArrayList<Subject> subjects) {
-		this.subjects = subjects;
-	}
-
-	public void addSubject(Subject subject) {
-		subjects.add(subject);
+	
+	public String toString() {
+		return super.toString() + ";" + title;
 	}
 }

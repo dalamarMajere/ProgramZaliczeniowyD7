@@ -1,0 +1,6 @@
+1;Bankowoœæ;
+1;Rachunkowoœæ;
+1;Statystyka;
+1;Us³ugi;
+1;a;
+1;a;

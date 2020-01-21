@@ -6,15 +6,14 @@ import java.util.*;
 public class dataAnalyzer {
 
 	 public static String readFile(File file) throws IOException{
-
 		RandomAccessFile raf = new RandomAccessFile(file,"rw");
 		byte output[] = new byte[(int) file.length()];
 		raf.read(output);
+		raf.close();
 		return new String(output);
 	 }
 
 	public static void loadUnit(File file, String[] toWrite) throws IOException {
-
 		Scanner read = new Scanner(file);
 
 		StringBuilder sb = new StringBuilder();
@@ -40,23 +39,25 @@ public class dataAnalyzer {
 		read.close();
 	}
 
-	public static String filterFile(File file, String criterium) throws IOException{
-
-		StringBuilder sb = new StringBuilder();
+	public static ArrayList<String> filterFile(File file, String criterium) throws IOException{
 		String textOutput = readFile(file);
-		String objects[] = textOutput.split( "\r\n" );
+		ArrayList<String> filtered=filterString(textOutput,criterium);
+		return filtered;
+	}
+
+	public static ArrayList<String> filterString(String str, String criterium) throws IOException{
+		ArrayList<String> filtered = new ArrayList<String>();
+		String objects[] = str.split( "\r\n" );
 
 		for (int i = 0; i < objects.length; i++) {
-			if (objects[i].contains(criterium)) {
-				appendToSB(sb, objects[i]);
+			if (objects[i].toLowerCase().contains(criterium.toLowerCase())) {
+				filtered.add(objects[i]);
 			}
 		}
 
-		return sb.toString();
+		return filtered;
 	}
-
 	public static void loadObject(File file, String object) throws IOException {
-
 		Scanner read = new Scanner(file);
 
 		StringBuilder sb = new StringBuilder();
@@ -83,7 +84,6 @@ public class dataAnalyzer {
 	}
 
 	private static int myCompareTo(String one, String two) {
-
 		String[] ones = one.split(";");
 		String[] twos = two.split(";");
 
@@ -98,7 +98,6 @@ public class dataAnalyzer {
 	}
 
 	private static void rewrite(File file, String sb) throws IOException {
-
 		//System.out.print(sb);
 		PrintWriter out = new PrintWriter(file);
 		out.print(sb);
