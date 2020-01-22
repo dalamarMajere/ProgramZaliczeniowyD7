@@ -61,6 +61,19 @@
                         <Button mnemonicParsing="false" onAction="#studentAddButtonAction" prefHeight="25.0" prefWidth="71.0" text="+" />
                      </children>
                   </HBox>
+                  <Label layoutX="20.0" layoutY="246.0" text="Dodaj ocenę" />
+                  <HBox>
+                     <children>
+                        <HBox>
+                           <children>
+                              <ChoiceBox fx:id="gradeIdChoiceBox" prefWidth="150.0" />
+                              <ChoiceBox fx:id="gradeSubjectChoiceBox" prefWidth="150.0" />
+                              <ChoiceBox fx:id="gradeChoiceBox" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#GradeAddButtonAction" text="Dodaj" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </content>
@@ -156,6 +169,7 @@
                      <children>
                         <HBox prefHeight="34.0" prefWidth="840.0">
                            <children>
+                              <TextField fx:id="subjectIdLabel" promptText="id" />
                               <TextField fx:id="subjectNameLabel" prefHeight="25.0" prefWidth="541.0" promptText="nazwa" />
                               <ChoiceBox fx:id="subjectFacultyChoiceBox" prefHeight="25.0" prefWidth="155.0" />
                               <ChoiceBox fx:id="subjectCourseChoiceBox" prefHeight="25.0" prefWidth="153.0" />

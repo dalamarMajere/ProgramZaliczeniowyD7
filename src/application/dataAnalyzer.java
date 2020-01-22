@@ -38,6 +38,14 @@ public class dataAnalyzer {
 
 		read.close();
 	}
+	
+
+	public static void addGrade(String path, String grade) throws IOException {
+		RandomAccessFile raf = new RandomAccessFile(path, "rw");
+		//raf.setLength(raf.length() + 8);
+		raf.seek(raf.length());
+		raf.writeUTF(grade);
+	}
 
 	public static ArrayList<String> filterFile(File file, String criterium) throws IOException{
 		String textOutput = readFile(file);
@@ -97,7 +105,7 @@ public class dataAnalyzer {
 		return 0;
 	}
 
-	private static void rewrite(File file, String sb) throws IOException {
+	public static void rewrite(File file, String sb) throws IOException {
 		//System.out.print(sb);
 		PrintWriter out = new PrintWriter(file);
 		out.print(sb);

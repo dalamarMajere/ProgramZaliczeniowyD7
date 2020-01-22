@@ -92,7 +92,28 @@ public class Controller implements Initializable {
 			studentTextArea.insertText(studentTextArea.getLength(), "\n");
     	}
 	}
-
+	
+	/*
+	 * STUDENT'S GRADE
+	 */
+	
+	public ChoiceBox<String> gradeIdChoiceBox;
+	public ChoiceBox<String> gradeSubjectChoiceBox;
+	public ChoiceBox<String> gradeChoiceBox = new ChoiceBox<>();
+	
+	public void GradeAddButtonAction() throws IOException {
+		String id = gradeIdChoiceBox.getValue();
+		String subject = gradeSubjectChoiceBox.getValue();
+		String grade = gradeChoiceBox.getValue();
+		
+		if (checkChoiceBox(gradeChoiceBox, gradeIdChoiceBox, gradeSubjectChoiceBox)) {
+			Main.addGrade(id, subject, grade);
+			gradeChoiceBox.setValue(null);
+			gradeIdChoiceBox.setValue(null);
+			gradeSubjectChoiceBox.setValue(null);
+		}
+    }
+	
 	/*
 	 * TEACHER
 	*/
@@ -146,7 +167,7 @@ public class Controller implements Initializable {
 	public TextField subjectCryteriumLabel;
 	public TextArea subjectTextArea;
 	public TextField subjectNameLabel;
-	public TextField subjectIdLabel = new TextField("");
+	public TextField subjectIdLabel;
 	public ChoiceBox<String> subjectFacultyChoiceBox;
 	public ChoiceBox<String> subjectCourseChoiceBox;
 
@@ -156,7 +177,7 @@ public class Controller implements Initializable {
 
     public void subjectAddButtonAction() throws IOException {
     	String name = subjectNameLabel.getText();
-    	String id = "0";//subjectIdLabel.getText();
+    	String id = subjectIdLabel.getText();
     	String faculty = subjectFacultyChoiceBox.getValue();
     	String course = subjectCourseChoiceBox.getValue();
 
@@ -366,6 +387,23 @@ public class Controller implements Initializable {
 		studentFacultyChoiceBox.setItems(list);
 		courseFacultyChoiceBox.setItems(list);
 		subjectFacultyChoiceBox.setItems(list);
+		gradeChoiceBox.setItems(FXCollections.observableArrayList("5.0", "4.5", "4.0", "3.5", "3.0", "2.5", "2.0"));
+		
+		gradeIdChoiceBox.setItems(getId());
+		
+		gradeIdChoiceBox.getSelectionModel().selectedItemProperty().
+			addListener(new ChangeListener<String>() {
+				public void changed(ObservableValue<? extends String> observable,
+	                    String oldValue, String newValue) {
+	                if (newValue != null) {
+	                    try {
+							gradeSubjectChoiceBox.setItems(getSubject(gradeIdChoiceBox.getValue()));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+	                }
+	            }
+	        });
 
 		studentFacultyChoiceBox.getSelectionModel().selectedItemProperty().
 			addListener(new ChangeListener<String>() {
@@ -389,6 +427,25 @@ public class Controller implements Initializable {
 	            }
         });
 	}
+    
+    private ObservableList<String> getSubject(String id) throws IOException {
+    	Student student = Main.studentById(id);
+    	try {
+			ArrayList<String> list = Main.getAllSubjects(student.getFaculty(), student.getCourse());
+			if (!list.isEmpty()) return FXCollections.observableList(list);
+		}
+		catch (IOException e) {e.printStackTrace();}
+		return FXCollections.observableArrayList();
+    }
+    
+    private ObservableList<String> getId() {
+    	try {
+			ArrayList<String> list = Main.getId();
+			if (!list.isEmpty()) return FXCollections.observableList(list);
+		}
+		catch (IOException e) {e.printStackTrace();}
+		return FXCollections.observableArrayList();
+    }
 
     private ObservableList<String> getCourse(String faculty) {
 		try {

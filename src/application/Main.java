@@ -42,10 +42,47 @@ public class Main extends Application {
 		 String courseFolder = facultyFolder + "/Courses/" + student.getCourse();
 		 loadObject(courseFolder + "/" + "Student.txt", student.toString());
 	 }
+	 
+	 public static ArrayList<String> getId() throws IOException {
+		 String ids[] = dataAnalyzer.readFile(new File(DataStudent)).split("\r\n");
+		 ArrayList<String> res = new ArrayList<>();
+		 for (String i: ids) {
+			 res.add(i.split(";")[0]);
+		 }
+		 return res;
+	 }
 
 	 public static ArrayList<String> searchStudent(String criterium) throws IOException{
 		ArrayList filter = dataAnalyzer.filterFile(new File(DataStudent),criterium);
 		return filter;
+	 }
+	 
+	 public static void addGrade(String id, String subject, String grade) throws IOException {
+		 Student student = studentById(id);
+		 
+		 String faculty = student.getFaculty();
+		 String course = student.getCourse();
+		 
+		 String path = FolderFaculty + "/" + faculty + "/" + FolderCourse + "/" + course + "/Subjects/" + subject +
+				 "/" + id + ".txt";
+		 try {
+			File f = new File(path);
+         	if (f.createNewFile() || f.isFile())
+         	{
+         		String add = dataAnalyzer.readFile(f) + grade + ";";
+         		dataAnalyzer.rewrite(f, add);
+         	}
+         	else System.err.println("Error with creating file");
+  		}
+  		catch (Exception e) {
+        	System.err.println(e);
+  		}
+	 }
+	 
+	 public static Student studentById(String id) throws IOException {
+		 ArrayList<String> tmp = searchStudent(id);
+		 String[] inf = tmp.get(0).split(";");
+		 return new Student(inf);
 	 }
 
 	 /*
